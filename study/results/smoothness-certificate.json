@@ -1,0 +1,73 @@
+{
+  "prime": "21888242871839275222246405745257275088548364400416034343698204186575808495617",
+  "constraints": 20,
+  "wires": 20,
+  "retained_constraints": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    19
+  ],
+  "fixing_coordinates": [
+    0
+  ],
+  "retained_augmented_rank": 15,
+  "retained_augmented_rows": 15,
+  "dimension": 5,
+  "quadratic_rows": 14,
+  "degree_upper_bound": 16384,
+  "deterministic_identities": [
+    {
+      "type": "guard",
+      "target": 7,
+      "integer_coefficient_identity": true,
+      "multiplier_value": "21888242871839275222246405745257275088548364400416034343698204186575808495616"
+    },
+    {
+      "type": "guard",
+      "target": 8,
+      "integer_coefficient_identity": true,
+      "multiplier_value": "21888242871839275222246405745257275088548364400416034343698204186575808495616"
+    },
+    {
+      "type": "guard",
+      "target": 9,
+      "integer_coefficient_identity": true,
+      "multiplier_value": "21888242871839275222246405745257275088548364400416034343698204186575808495616"
+    },
+    {
+      "type": "guard",
+      "target": 10,
+      "integer_coefficient_identity": true,
+      "multiplier_value": "21888242871839275222246405745257275088548364400416034343698204186575808495616"
+    },
+    {
+      "type": "guard",
+      "target": 11,
+      "integer_coefficient_identity": true,
+      "multiplier_value": "21888242871839275222246405745257275088548364400416034343698204186575808495616"
+    },
+    {
+      "type": "weighted_sum",
+      "integer_coefficient_identity": true,
+      "multiplier_value": "21888242871839275222246405745257275088548364400416034343698204186575808495616",
+      "identity_monomials": 2814,
+      "total_degree": 10
+    }
+  ],
+  "degree_inequality": true,
+  "dimension_inequality": true,
+  "target_value_lower_bound_rational": "21888242871839275222246405745257275088548364400416034343698204186575808495617/32768",
+  "seconds": 0.0053218749817460775,
+  "scope": "Synthetic 20-constraint example; no real-gadget smoothness certificate claimed"
+}

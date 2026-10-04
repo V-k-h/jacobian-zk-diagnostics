@@ -1,0 +1,465 @@
+{
+  "random_matrix_crosschecks": 240,
+  "exports": [
+    {
+      "name": "bits_32",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": true
+    },
+    {
+      "name": "bits_8",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": true
+    },
+    {
+      "name": "chain_120",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "chain_20",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "chain_200",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "chain_3",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "chain_60",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "cubic_critical",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": true
+    },
+    {
+      "name": "cubic_regular",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": true
+    },
+    {
+      "name": "iszero_0",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": true
+    },
+    {
+      "name": "iszero_7",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": true
+    },
+    {
+      "name": "mimc_1",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "mimc_2",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_0_forged",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_0_honest",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_0_zero_decomp",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_12345_forged",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_12345_honest",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_12345_zero_decomp",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_1_forged",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_1_honest",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_1_zero_decomp",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_54321_forged",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_54321_honest",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    },
+    {
+      "name": "scalar_54321_zero_decomp",
+      "witness_verified": true,
+      "directional_identity_checked": true,
+      "dense_rank_crosscheck": false
+    }
+  ],
+  "controlled_queries": [
+    {
+      "name": "affine_free",
+      "prime": 7,
+      "constraints": 0,
+      "solutions": 7,
+      "target_value_counts": {
+        "0": 7
+      },
+      "moving_targets": [
+        0
+      ],
+      "target_dimension": 1,
+      "line_confirmed_targets": [
+        0
+      ],
+      "confirmed_moving_targets": [
+        0
+      ],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "hyperbola",
+      "prime": 7,
+      "constraints": 1,
+      "solutions": 6,
+      "target_value_counts": {
+        "0": 6,
+        "1": 6
+      },
+      "moving_targets": [
+        0,
+        1
+      ],
+      "target_dimension": 1,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [
+        0,
+        1
+      ],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "guard_honest",
+      "prime": 7,
+      "constraints": 2,
+      "solutions": 8,
+      "target_value_counts": {
+        "1": 7
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": [
+        1
+      ]
+    },
+    {
+      "name": "guard_degenerate",
+      "prime": 7,
+      "constraints": 2,
+      "solutions": 8,
+      "target_value_counts": {
+        "1": 7
+      },
+      "moving_targets": [
+        1
+      ],
+      "target_dimension": 1,
+      "line_confirmed_targets": [
+        1
+      ],
+      "confirmed_moving_targets": [
+        1
+      ],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "guard_repaired",
+      "prime": 7,
+      "constraints": 3,
+      "solutions": 1,
+      "target_value_counts": {
+        "1": 1
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "square_root",
+      "prime": 7,
+      "constraints": 1,
+      "solutions": 2,
+      "target_value_counts": {
+        "0": 2
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": [
+        0
+      ]
+    },
+    {
+      "name": "nonradical_square",
+      "prime": 7,
+      "constraints": 1,
+      "solutions": 1,
+      "target_value_counts": {
+        "0": 1
+      },
+      "moving_targets": [
+        0
+      ],
+      "target_dimension": 1,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [
+        0
+      ],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "anisotropic_origin",
+      "prime": 7,
+      "constraints": 2,
+      "solutions": 1,
+      "target_value_counts": {
+        "0": 1,
+        "1": 1
+      },
+      "moving_targets": [
+        0,
+        1
+      ],
+      "target_dimension": 2,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [
+        0,
+        1
+      ],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "ramified_parabola",
+      "prime": 7,
+      "constraints": 1,
+      "solutions": 7,
+      "target_value_counts": {
+        "1": 4
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": [
+        1
+      ]
+    },
+    {
+      "name": "coupled_roots",
+      "prime": 7,
+      "constraints": 2,
+      "solutions": 2,
+      "target_value_counts": {
+        "0": 2,
+        "1": 2
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": [
+        0,
+        1
+      ]
+    },
+    {
+      "name": "unique_chain",
+      "prime": 7,
+      "constraints": 2,
+      "solutions": 1,
+      "target_value_counts": {
+        "1": 1,
+        "2": 1
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": []
+    },
+    {
+      "name": "iszero_benign_inverse",
+      "prime": 7,
+      "constraints": 3,
+      "solutions": 7,
+      "target_value_counts": {
+        "2": 1
+      },
+      "moving_targets": [],
+      "target_dimension": 0,
+      "line_confirmed_targets": [],
+      "confirmed_moving_targets": [],
+      "spurious_for_nonuniqueness": [],
+      "rigid_nonunique_targets": []
+    }
+  ],
+  "multiplicity": [
+    {
+      "name": "monic_square_chain_1",
+      "prime": 257,
+      "degrees": [
+        2
+      ],
+      "leading_coefficients": [
+        1
+      ],
+      "certificate_type": "original monic triangular generators; no ideal-membership search",
+      "tuple_bound": 2,
+      "enumerated_tuples": 2,
+      "last_target_values": 2
+    },
+    {
+      "name": "monic_square_chain_2",
+      "prime": 257,
+      "degrees": [
+        2,
+        2
+      ],
+      "leading_coefficients": [
+        1,
+        1
+      ],
+      "certificate_type": "original monic triangular generators; no ideal-membership search",
+      "tuple_bound": 4,
+      "enumerated_tuples": 4,
+      "last_target_values": 4
+    },
+    {
+      "name": "monic_square_chain_3",
+      "prime": 257,
+      "degrees": [
+        2,
+        2,
+        2
+      ],
+      "leading_coefficients": [
+        1,
+        1,
+        1
+      ],
+      "certificate_type": "original monic triangular generators; no ideal-membership search",
+      "tuple_bound": 8,
+      "enumerated_tuples": 8,
+      "last_target_values": 8
+    },
+    {
+      "name": "coupled_roots",
+      "certificate_type": "exact coefficient identity plus original linear generator",
+      "degrees": [
+        2,
+        1
+      ],
+      "leading_coefficients": [
+        1,
+        1
+      ],
+      "tuple_bound": 2,
+      "enumerated_tuples": 2
+    },
+    {
+      "name": "linear_target",
+      "degrees": [
+        1
+      ],
+      "tuple_bound": 1,
+      "enumerated_tuples": 1
+    },
+    {
+      "name": "nonradical_square",
+      "degrees": [
+        2
+      ],
+      "tuple_bound": 2,
+      "enumerated_tuples": 1,
+      "note": "Upper bound need not be attained"
+    },
+    {
+      "name": "hyperbola",
+      "certificate_type": "none supplied",
+      "verdict": "unknown; do not invent a triangular certificate"
+    }
+  ],
+  "interpretation": "Designed controls and multiple witnesses of one real scalar-multiplication defect; not a representative vulnerability corpus."
+}

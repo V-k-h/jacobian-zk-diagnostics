@@ -1,0 +1,82 @@
+[
+ {
+  "label": "scalar_12345_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 2",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "197db1b81cc429de739e3aaf5b43a0e4f571fa2dd0e18b4aa529bf8d5ffff4de"
+ },
+ {
+  "label": "scalar_12345_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 3",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "197db1b81cc429de739e3aaf5b43a0e4f571fa2dd0e18b4aa529bf8d5ffff4de"
+ },
+ {
+  "label": "scalar_1_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 2",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "6fb4afedf04045facfc1baa7ee220c746381aff118def26f1e3350b07b0ed010"
+ },
+ {
+  "label": "scalar_1_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 3",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "6fb4afedf04045facfc1baa7ee220c746381aff118def26f1e3350b07b0ed010"
+ },
+ {
+  "label": "scalar_54321_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 2",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "95cf36fe0368b80add786106dc10e901279a775a9a221d3ec98297d56c9061c2"
+ },
+ {
+  "label": "scalar_54321_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 3",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "95cf36fe0368b80add786106dc10e901279a775a9a221d3ec98297d56c9061c2"
+ },
+ {
+  "label": "scalar_0_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 2",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "a3176afb53ee1684b16778fec596b96c8c2bf599048e38662f950ab1b3ab2708"
+ },
+ {
+  "label": "scalar_0_zero_decomp slice W=[2, 3, 263, 264, 266, 267, 268] target wire 3",
+  "slice_vars": 7,
+  "slice_generators": 5,
+  "gb_size": 6,
+  "gb_seconds": 0.001,
+  "elimination_ideal": "zero",
+  "conclusion": "target projection dominant on the slice variety: all but finitely many values attained over the closure",
+  "sha256": "a3176afb53ee1684b16778fec596b96c8c2bf599048e38662f950ab1b3ab2708"
+ }
+]

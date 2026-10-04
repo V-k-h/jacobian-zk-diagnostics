@@ -1,0 +1,121 @@
+[
+ {
+  "instance": "scalar_0_honest",
+  "sha256": "1b75deb75f033b44ee4f0c7e23e7b2a16623df146bdc19af6031dc9e6733661b",
+  "constraints": 2398,
+  "tangents_tried": 14,
+  "statuses": {
+   "t2-t3-system-inconsistent": 13,
+   "certified": 1
+  },
+  "parabola_certificates": [
+   {
+    "targets_moved": [
+     3
+    ],
+    "v_support": 4,
+    "u_support": 0,
+    "linear_in_target": [
+     3
+    ],
+    "u_complete_search": true
+   }
+  ],
+  "seconds": 3.094
+ },
+ {
+  "instance": "scalar_0_zero_decomp",
+  "sha256": "a3176afb53ee1684b16778fec596b96c8c2bf599048e38662f950ab1b3ab2708",
+  "constraints": 2398,
+  "tangents_tried": 14,
+  "statuses": {
+   "t2-t3-system-inconsistent": 13,
+   "certified": 1
+  },
+  "parabola_certificates": [
+   {
+    "targets_moved": [
+     3
+    ],
+    "v_support": 4,
+    "u_support": 0,
+    "linear_in_target": [
+     3
+    ],
+    "u_complete_search": true
+   }
+  ],
+  "seconds": 3.118
+ },
+ {
+  "instance": "scalar_1_zero_decomp",
+  "sha256": "6fb4afedf04045facfc1baa7ee220c746381aff118def26f1e3350b07b0ed010",
+  "constraints": 2398,
+  "tangents_tried": 14,
+  "statuses": {
+   "t2-t3-system-inconsistent": 12,
+   "t4-fails-unique-u": 2
+  },
+  "parabola_certificates": [],
+  "seconds": 3.115
+ },
+ {
+  "instance": "scalar_12345_zero_decomp",
+  "sha256": "197db1b81cc429de739e3aaf5b43a0e4f571fa2dd0e18b4aa529bf8d5ffff4de",
+  "constraints": 2398,
+  "tangents_tried": 15,
+  "statuses": {
+   "t2-t3-system-inconsistent": 14,
+   "t4-fails-unique-u": 1
+  },
+  "parabola_certificates": [],
+  "seconds": 3.329
+ },
+ {
+  "instance": "scalar_54321_zero_decomp",
+  "sha256": "95cf36fe0368b80add786106dc10e901279a775a9a221d3ec98297d56c9061c2",
+  "constraints": 2398,
+  "tangents_tried": 15,
+  "statuses": {
+   "t2-t3-system-inconsistent": 14,
+   "t4-fails-unique-u": 1
+  },
+  "parabola_certificates": [],
+  "seconds": 3.336
+ },
+ {
+  "instance": "sweep_11_both_hints_zero",
+  "sha256": "2de527ff47ab3e164bbf039b52cdc34e4556dea212d6ffe7ddeb0c84f5a66520",
+  "constraints": 2398,
+  "tangents_tried": 14,
+  "statuses": {
+   "t2-t3-system-inconsistent": 12,
+   "certified": 2
+  },
+  "parabola_certificates": [
+   {
+    "targets_moved": [
+     3
+    ],
+    "v_support": 4,
+    "u_support": 0,
+    "linear_in_target": [
+     3
+    ],
+    "u_complete_search": true
+   },
+   {
+    "targets_moved": [
+     2
+    ],
+    "v_support": 4,
+    "u_support": 0,
+    "linear_in_target": [
+     2
+    ],
+    "u_complete_search": true
+   }
+  ],
+  "seconds": 3.103
+ }
+]

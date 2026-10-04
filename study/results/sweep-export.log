@@ -1,0 +1,100 @@
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.610458
+EXPORTED sweep_00_honest: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.582833
+EXPORTED sweep_01_decomposition_zero: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #4 is not satisfied: 1 ⋅ 0 != 12345" nbConstraints=2398
+REJECTED sweep_02_decomposition_output_0_zero: constraint #4 is not satisfied: 1 ⋅ 0 != 12345
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #4 is not satisfied: 1 ⋅ 12345 != 0" nbConstraints=2398
+REJECTED sweep_03_decomposition_output_1_zero: constraint #4 is not satisfied: 1 ⋅ 12345 != 0
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #4 is not satisfied: 1 ⋅ 24690 != 0" nbConstraints=2398
+REJECTED sweep_04_decomposition_output_2_zero: constraint #4 is not satisfied: 1 ⋅ 24690 != 0
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.7705
+EXPORTED sweep_05_decomposition_output_3_zero: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #4 is not satisfied: 1 ⋅ 24690 != 0" nbConstraints=2398
+REJECTED sweep_06_decomposition_sign_flip: constraint #4 is not satisfied: 1 ⋅ 24690 != 0
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #2395 is not satisfied: 1 ⋅ 0 != 1" nbConstraints=2398
+REJECTED sweep_07_point_zero: constraint #2395 is not satisfied: 1 ⋅ 0 != 1
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #2394 is not satisfied: 1 ⋅ 8772314494783595720417489172145907288506406865032415624044463688339034879557 != 0" nbConstraints=2398
+REJECTED sweep_08_point_x_zero: constraint #2394 is not satisfied: 1 ⋅ 8772314494783595720417489172145907288506406865032415624044463688339034879557 != 0
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #2394 is not satisfied: 1 ⋅ 16334322953888466343404606101979498999069576605375698580331393460196982081585 != 0" nbConstraints=2398
+REJECTED sweep_09_point_y_zero: constraint #2394 is not satisfied: 1 ⋅ 16334322953888466343404606101979498999069576605375698580331393460196982081585 != 0
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 ERR error="constraint #2394 is not satisfied: 1 ⋅ 19918712023960437102123786886411468478902094248734671506464346041569881874462 != 0" nbConstraints=2398
+REJECTED sweep_10_point_identity: constraint #2394 is not satisfied: 1 ⋅ 19918712023960437102123786886411468478902094248734671506464346041569881874462 != 0
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.546834
+EXPORTED sweep_11_both_hints_zero: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.738291
+EXPORTED sweep_12_random_point_zero_decomposition_0: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.577167
+EXPORTED sweep_13_random_point_zero_decomposition_1: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.581333
+EXPORTED sweep_14_random_point_zero_decomposition_2: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.538084
+EXPORTED sweep_15_random_point_zero_decomposition_3: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.556166
+EXPORTED sweep_16_random_point_zero_decomposition_4: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.549917
+EXPORTED sweep_17_random_point_zero_decomposition_5: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.561125
+EXPORTED sweep_18_random_point_zero_decomposition_6: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+02:03:53 INF compiling circuit
+02:03:53 INF parsed circuit inputs nbPublic=1 nbSecret=2
+02:03:53 INF building constraint builder nbConstraints=2398
+02:03:53 DBG constraint system solver done nbConstraints=2398 took=0.548417
+EXPORTED sweep_19_random_point_zero_decomposition_7: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]

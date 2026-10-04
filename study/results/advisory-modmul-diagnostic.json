@@ -1,0 +1,40 @@
+[
+ {
+  "name": "modmul_honest",
+  "constraints": 890,
+  "wires": 1647,
+  "rank": 914,
+  "nullity": 733,
+  "moving_targets": [
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32
+  ],
+  "rT_targets": 8,
+  "line_search": "n/a"
+ },
+ {
+  "name": "modmul_shifted",
+  "constraints": 890,
+  "wires": 1647,
+  "rank": 914,
+  "nullity": 733,
+  "moving_targets": [
+   25,
+   26,
+   27,
+   28,
+   29,
+   30,
+   31,
+   32
+  ],
+  "rT_targets": 8,
+  "line_search": "n/a"
+ }
+]

@@ -1,0 +1,14 @@
+== advisory gadget 2: emulated ModMul variable-modulus remainder ==
+-- gnark v0.14.0 (vulnerable), groth16 prove-level --
+PROVE modmul_honest: proof produced, verify error=<nil>
+PROVE modmul_shifted_r_plus_m: proof produced, verify error=<nil>
+
+-- gnark v0.14.0 exports (advice challenge) --
+EXPORTED modmul_honest: constraints=890 wires=1647 fixed=25 targets=[25 26 27 28 29 30 31 32]
+EXPORTED modmul_shifted: constraints=890 wires=1647 fixed=25 targets=[25 26 27 28 29 30 31 32]
+
+-- gnark v0.16.2 (patched), groth16 prove-level --
+PROVE patched_modmul_honest: proof produced, verify error=<nil> (constraints=1144)
+PROVE patched_modmul_shifted: proof produced, verify error=<nil> (constraints=1144)
+PROVE patched_modmul_canonical_honest: proof produced, verify error=<nil> (constraints=6472)
+PROVE patched_modmul_canonical_shifted: prove REJECTED: constraint #3852 is not satisfied: 1 ⋅ -1 != 0

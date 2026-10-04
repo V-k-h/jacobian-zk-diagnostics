@@ -1,0 +1,170 @@
+[
+  {
+    "compile_solve_export_seconds": 0.007445583,
+    "label": "honest",
+    "name": "sweep_00_honest",
+    "scalar": 12345,
+    "variant": 0,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.006934167,
+    "label": "decomposition_zero",
+    "name": "sweep_01_decomposition_zero",
+    "scalar": 12345,
+    "variant": 1,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.002900209,
+    "label": "decomposition_output_0_zero",
+    "name": "sweep_02_decomposition_output_0_zero",
+    "scalar": 12345,
+    "solver_error": "constraint #4 is not satisfied: 1 \u22c5 0 != 12345",
+    "variant": 2,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.002703542,
+    "label": "decomposition_output_1_zero",
+    "name": "sweep_03_decomposition_output_1_zero",
+    "scalar": 12345,
+    "solver_error": "constraint #4 is not satisfied: 1 \u22c5 12345 != 0",
+    "variant": 3,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.002192167,
+    "label": "decomposition_output_2_zero",
+    "name": "sweep_04_decomposition_output_2_zero",
+    "scalar": 12345,
+    "solver_error": "constraint #4 is not satisfied: 1 \u22c5 24690 != 0",
+    "variant": 4,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.0068175,
+    "label": "decomposition_output_3_zero",
+    "name": "sweep_05_decomposition_output_3_zero",
+    "scalar": 12345,
+    "variant": 5,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.002523709,
+    "label": "decomposition_sign_flip",
+    "name": "sweep_06_decomposition_sign_flip",
+    "scalar": 12345,
+    "solver_error": "constraint #4 is not satisfied: 1 \u22c5 24690 != 0",
+    "variant": 6,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.002810584,
+    "label": "point_zero",
+    "name": "sweep_07_point_zero",
+    "scalar": 12345,
+    "solver_error": "constraint #2395 is not satisfied: 1 \u22c5 0 != 1",
+    "variant": 7,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.002639,
+    "label": "point_x_zero",
+    "name": "sweep_08_point_x_zero",
+    "scalar": 12345,
+    "solver_error": "constraint #2394 is not satisfied: 1 \u22c5 8772314494783595720417489172145907288506406865032415624044463688339034879557 != 0",
+    "variant": 8,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.002914458,
+    "label": "point_y_zero",
+    "name": "sweep_09_point_y_zero",
+    "scalar": 12345,
+    "solver_error": "constraint #2394 is not satisfied: 1 \u22c5 16334322953888466343404606101979498999069576605375698580331393460196982081585 != 0",
+    "variant": 9,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.002904875,
+    "label": "point_identity",
+    "name": "sweep_10_point_identity",
+    "scalar": 12345,
+    "solver_error": "constraint #2394 is not satisfied: 1 \u22c5 19918712023960437102123786886411468478902094248734671506464346041569881874462 != 0",
+    "variant": 10,
+    "witness_generated": false
+  },
+  {
+    "compile_solve_export_seconds": 0.006202583,
+    "label": "both_hints_zero",
+    "name": "sweep_11_both_hints_zero",
+    "scalar": 12345,
+    "variant": 11,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.00611325,
+    "label": "random_point_zero_decomposition_0",
+    "name": "sweep_12_random_point_zero_decomposition_0",
+    "scalar": 12345,
+    "variant": 12,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.006133417,
+    "label": "random_point_zero_decomposition_1",
+    "name": "sweep_13_random_point_zero_decomposition_1",
+    "scalar": 12345,
+    "variant": 13,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.00580075,
+    "label": "random_point_zero_decomposition_2",
+    "name": "sweep_14_random_point_zero_decomposition_2",
+    "scalar": 12345,
+    "variant": 14,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.005631958,
+    "label": "random_point_zero_decomposition_3",
+    "name": "sweep_15_random_point_zero_decomposition_3",
+    "scalar": 12345,
+    "variant": 15,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.005868666,
+    "label": "random_point_zero_decomposition_4",
+    "name": "sweep_16_random_point_zero_decomposition_4",
+    "scalar": 12345,
+    "variant": 16,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.00580675,
+    "label": "random_point_zero_decomposition_5",
+    "name": "sweep_17_random_point_zero_decomposition_5",
+    "scalar": 12345,
+    "variant": 17,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.005708709,
+    "label": "random_point_zero_decomposition_6",
+    "name": "sweep_18_random_point_zero_decomposition_6",
+    "scalar": 12345,
+    "variant": 18,
+    "witness_generated": true
+  },
+  {
+    "compile_solve_export_seconds": 0.005911416,
+    "label": "random_point_zero_decomposition_7",
+    "name": "sweep_19_random_point_zero_decomposition_7",
+    "scalar": 12345,
+    "variant": 19,
+    "witness_generated": true
+  }
+]

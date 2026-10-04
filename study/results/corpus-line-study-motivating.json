@@ -1,0 +1,64 @@
+[
+ {
+  "set": "motivating",
+  "circuit": "VDBuggy",
+  "constraints": 24,
+  "wires": 27,
+  "ronin_seconds": 4.56,
+  "ronin_verdict": "underconstrained",
+  "witnesses_verified": false,
+  "status": "cex-does-not-verify"
+ },
+ {
+  "set": "motivating",
+  "circuit": "VDFixed",
+  "constraints": 29,
+  "wires": 33,
+  "ronin_seconds": 2.91,
+  "ronin_verdict": "safe",
+  "status": "safe"
+ },
+ {
+  "set": "motivating",
+  "circuit": "ValidateDecodingBuggy",
+  "constraints": 3,
+  "wires": 5,
+  "ronin_seconds": 2.73,
+  "ronin_verdict": "underconstrained",
+  "witnesses_verified": true,
+  "nullity_a": 2,
+  "moving_outputs_a": 0,
+  "rT_outputs_a": 0,
+  "line_search_a": {
+   "complete": true,
+   "target_moving_line": false
+  },
+  "nullity_b": 2,
+  "moving_outputs_b": 0,
+  "rT_outputs_b": 0,
+  "line_search_b": {
+   "complete": true,
+   "target_moving_line": false
+  },
+  "picus_direction_at_a": "not-tangent",
+  "status": "analysed"
+ },
+ {
+  "set": "motivating",
+  "circuit": "ValidateDecodingFixed",
+  "constraints": 6,
+  "wires": 8,
+  "ronin_seconds": 2.74,
+  "ronin_verdict": "safe",
+  "status": "safe"
+ },
+ {
+  "set": "motivating",
+  "circuit": "adder",
+  "constraints": 9,
+  "wires": 9,
+  "ronin_seconds": 2.7,
+  "ronin_verdict": "safe",
+  "status": "safe"
+ }
+]

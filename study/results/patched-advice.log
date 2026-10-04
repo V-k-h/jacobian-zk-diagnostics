@@ -1,0 +1,9 @@
+== commitment-as-advice exports (gnark v0.16.2), two fixed challenge values ==
+EXPORTED patched_advice_c1_scalar_0_honest: solved=true constraints=3319 fixed=[0 1] targets=[2 3] err=""
+EXPORTED patched_advice_c1_scalar_0_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="constraint #789 is not satisfied: 1 ⋅ 1 != 0"
+EXPORTED patched_advice_c2_scalar_0_honest: solved=true constraints=3319 fixed=[0 1] targets=[2 3] err=""
+EXPORTED patched_advice_c2_scalar_0_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="constraint #789 is not satisfied: 1 ⋅ 1 != 0"
+EXPORTED patched_advice_c1_scalar_12345_honest: solved=true constraints=3319 fixed=[0 1] targets=[2 3] err=""
+EXPORTED patched_advice_c1_scalar_12345_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="constraint #789 is not satisfied: 1 ⋅ 1 != 0"
+EXPORTED patched_advice_c2_scalar_12345_honest: solved=true constraints=3319 fixed=[0 1] targets=[2 3] err=""
+EXPORTED patched_advice_c2_scalar_12345_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="constraint #789 is not satisfied: 1 ⋅ 1 != 0"

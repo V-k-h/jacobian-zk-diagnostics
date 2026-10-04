@@ -1,0 +1,11 @@
+{
+  "solver_oracle_cases": 120,
+  "solver_status_counts": {
+    "unsat": 30,
+    "sat": 55,
+    "unknown": 35
+  },
+  "random_complete_line_search_oracle_cases": 80,
+  "modular_square_root_checks": 100,
+  "passed": true
+}

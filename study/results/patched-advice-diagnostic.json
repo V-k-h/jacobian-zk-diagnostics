@@ -1,0 +1,58 @@
+[
+ {
+  "name": "patched_advice_c1_scalar_0_honest",
+  "sha256": "99818b8316c28e504aa29f9168c708b7e556c31b2e1652c9901b2612c1e217a5",
+  "constraints": 3319,
+  "wires": 3451,
+  "rank": 3161,
+  "nullity": 290,
+  "moving": 660,
+  "projected_target_dimension": 290,
+  "seconds": 1.273,
+  "declared_targets_moving": 0,
+  "projected_target_dimension_declared_targets": 0,
+  "note": "challenge wire is a free hint in the compiled R1CS, so this relation is a relaxation of the deployed one; target rigidity here is sound for deployment"
+ },
+ {
+  "name": "patched_advice_c1_scalar_12345_honest",
+  "sha256": "83df323673d0f2e3affb7bde535581bb5431dc3fd313cfa039f01c1193514858",
+  "constraints": 3319,
+  "wires": 3451,
+  "rank": 3162,
+  "nullity": 289,
+  "moving": 659,
+  "projected_target_dimension": 289,
+  "seconds": 1.263,
+  "declared_targets_moving": 0,
+  "projected_target_dimension_declared_targets": 0,
+  "note": "challenge wire is a free hint in the compiled R1CS, so this relation is a relaxation of the deployed one; target rigidity here is sound for deployment"
+ },
+ {
+  "name": "patched_advice_c2_scalar_0_honest",
+  "sha256": "2b967cec663b015e61831799ebb76da72fff7bc9438209bfb490975af3770dfb",
+  "constraints": 3319,
+  "wires": 3451,
+  "rank": 3161,
+  "nullity": 290,
+  "moving": 660,
+  "projected_target_dimension": 290,
+  "seconds": 1.263,
+  "declared_targets_moving": 0,
+  "projected_target_dimension_declared_targets": 0,
+  "note": "challenge wire is a free hint in the compiled R1CS, so this relation is a relaxation of the deployed one; target rigidity here is sound for deployment"
+ },
+ {
+  "name": "patched_advice_c2_scalar_12345_honest",
+  "sha256": "0a2b328cd5bd89c3f84a925ba656930d841cc314e9e7424ceea8575d5c9ebc3e",
+  "constraints": 3319,
+  "wires": 3451,
+  "rank": 3162,
+  "nullity": 289,
+  "moving": 659,
+  "projected_target_dimension": 289,
+  "seconds": 1.278,
+  "declared_targets_moving": 0,
+  "projected_target_dimension_declared_targets": 0,
+  "note": "challenge wire is a free hint in the compiled R1CS, so this relation is a relaxation of the deployed one; target rigidity here is sound for deployment"
+ }
+]

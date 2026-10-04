@@ -1,0 +1,125 @@
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=1
+01:48:36 INF building constraint builder nbConstraints=3
+01:48:36 DBG constraint system solver done nbConstraints=3 took=0.019459
+EXPORTED cubic_regular: 5 wires, 3 constraints, fixed=[0 1], targets=[2]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=1
+01:48:36 INF building constraint builder nbConstraints=3
+01:48:36 DBG constraint system solver done nbConstraints=3 took=0.006834
+EXPORTED cubic_critical: 5 wires, 3 constraints, fixed=[0 1], targets=[2]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=9
+01:48:36 DBG constraint system solver done nbConstraints=9 took=0.014459
+EXPORTED bits_8: 10 wires, 9 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=33
+01:48:36 DBG constraint system solver done nbConstraints=33 took=0.037917
+EXPORTED bits_32: 34 wires, 33 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=1
+01:48:36 INF building constraint builder nbConstraints=3
+01:48:36 DBG constraint system solver done nbConstraints=3 took=0.009584
+EXPORTED iszero_0: 5 wires, 3 constraints, fixed=[0 1], targets=[2]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=1
+01:48:36 INF building constraint builder nbConstraints=3
+01:48:36 DBG constraint system solver done nbConstraints=3 took=0.010375
+EXPORTED iszero_7: 5 wires, 3 constraints, fixed=[0 1], targets=[2]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=1
+01:48:36 INF building constraint builder nbConstraints=331
+01:48:36 DBG constraint system solver done nbConstraints=331 took=0.034708
+EXPORTED mimc_1: 333 wires, 331 constraints, fixed=[0 1], targets=[2]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=661
+01:48:36 DBG constraint system solver done nbConstraints=661 took=0.064125
+EXPORTED mimc_2: 664 wires, 661 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=990
+01:48:36 DBG constraint system solver done nbConstraints=990 took=0.062125
+EXPORTED chain_3: 992 wires, 990 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=6600
+01:48:36 DBG constraint system solver done nbConstraints=6600 took=0.392458
+EXPORTED chain_20: 6602 wires, 6600 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=19800
+01:48:36 DBG constraint system solver done nbConstraints=19800 took=1.543625
+EXPORTED chain_60: 19802 wires, 19800 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=39600
+01:48:36 DBG constraint system solver done nbConstraints=39600 took=2.756459
+EXPORTED chain_120: 39602 wires, 39600 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=0
+01:48:36 INF building constraint builder nbConstraints=66000
+01:48:36 DBG constraint system solver done nbConstraints=66000 took=4.580708
+EXPORTED chain_200: 66002 wires, 66000 constraints, fixed=[0 1], targets=[]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.519916
+EXPORTED scalar_0_honest: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.562042
+EXPORTED scalar_0_zero_decomp: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.536209
+EXPORTED scalar_0_forged: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.576875
+EXPORTED scalar_1_honest: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.54725
+EXPORTED scalar_1_zero_decomp: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.536917
+EXPORTED scalar_1_forged: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.595667
+EXPORTED scalar_12345_honest: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.55775
+EXPORTED scalar_12345_zero_decomp: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.560042
+EXPORTED scalar_12345_forged: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:36 INF compiling circuit
+01:48:36 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:36 INF building constraint builder nbConstraints=2398
+01:48:36 DBG constraint system solver done nbConstraints=2398 took=0.581167
+EXPORTED scalar_54321_honest: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:37 INF compiling circuit
+01:48:37 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:37 INF building constraint builder nbConstraints=2398
+01:48:37 DBG constraint system solver done nbConstraints=2398 took=0.55775
+EXPORTED scalar_54321_zero_decomp: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]
+01:48:37 INF compiling circuit
+01:48:37 INF parsed circuit inputs nbPublic=1 nbSecret=2
+01:48:37 INF building constraint builder nbConstraints=2398
+01:48:37 DBG constraint system solver done nbConstraints=2398 took=0.693916
+EXPORTED scalar_54321_forged: 2400 wires, 2398 constraints, fixed=[0 1], targets=[2 3]

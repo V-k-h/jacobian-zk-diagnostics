@@ -1,0 +1,21 @@
+== R1CS-level export (gnark v0.16.2), PATCHED_EXPORT_DIR=/tmp/exports-patched ==
+EXPORTED patched_scalar_0_honest: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_0_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_0_forged: solved=false constraints=3319 fixed=[] targets=[] err="constraint #2950 is not satisfied: 1 ⋅ 0 != 9671717474070082183213120605117400219616337014328744928644933853176787189663"
+EXPORTED patched_scalar_1_honest: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_1_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_1_forged: solved=false constraints=3319 fixed=[] targets=[] err="constraint #793 is not satisfied: 0 ⋅ 1 != 1"
+EXPORTED patched_scalar_12345_honest: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_12345_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_12345_forged: solved=false constraints=3319 fixed=[] targets=[] err="constraint #793 is not satisfied: 0 ⋅ 1 != 1"
+EXPORTED patched_scalar_54321_honest: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_54321_zero_decomp: solved=false constraints=3319 fixed=[] targets=[] err="placeholder function: to be replaced by commitment computation"
+EXPORTED patched_scalar_54321_forged: solved=false constraints=3319 fixed=[] targets=[] err="constraint #793 is not satisfied: 0 ⋅ 1 != 1"
+
+== prove-level checks (groth16) ==
+PROVE patched_honest_S=0: proof produced in 0.01s, verify error=<nil> (expected success=true)
+PROVE patched_zero_decomp_S=0: prove REJECTED after 0.00s: constraint #789 is not satisfied: 1 ⋅ 1 != 0 (expected success=false)
+PROVE patched_forged_S=0: prove REJECTED after 0.00s: constraint #2950 is not satisfied: 1 ⋅ 0 != 9671717474070082183213120605117400219616337014328744928644933853176787189663 (expected success=false)
+PROVE patched_honest_S=12345: proof produced in 0.01s, verify error=<nil> (expected success=true)
+PROVE patched_zero_decomp_S=12345: prove REJECTED after 0.00s: constraint #789 is not satisfied: 1 ⋅ 1 != 0 (expected success=false)
+PROVE patched_forged_S=12345: prove REJECTED after 0.00s: constraint #793 is not satisfied: 0 ⋅ 1 != 1 (expected success=false)
