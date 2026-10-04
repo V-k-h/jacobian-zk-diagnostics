@@ -4,7 +4,7 @@ Circuit: `frontends/gnark/bench_public.go` `MiMCChain` — N chained MiMC permut
 single public input X on BN254 (gnark v0.14.0, 330 constraints per permutation), final digest
 deliberately unpinned so the solver fills every internal round wire from X alone. Ground truth:
 **all internal wires DETERMINED**. Uses only gnark's standard library — no client code — so the
-circuit, the exported artifacts, and this driver are all publishable.
+circuit, the exported instances, and this driver are all publishable.
 
 Pipeline (from `zk-soundness-monitor/`):
 

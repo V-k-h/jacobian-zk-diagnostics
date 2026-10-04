@@ -4,7 +4,7 @@
 FROM golang:1.25-bookworm
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 rsync && rm -rf /var/lib/apt/lists/*
-WORKDIR /artifact
+WORKDIR /repro
 COPY . .
 # Warm the Go module cache so runs are network-free afterwards.
 RUN cd frontends/gnark && go mod download \

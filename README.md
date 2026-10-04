@@ -1,6 +1,6 @@
-# Artifact: Jacobian Diagnostics for Under-Constrained Zero-Knowledge Circuits
+# Jacobian Diagnostics for Under-Constrained Zero-Knowledge Circuits
 
-Reproduction artifact for the paper (IACR ePrint 2026/1852). Every measured
+Reproduction code for the paper (IACR ePrint 2026/1852). Every measured
 table and claim in the paper regenerates from this repository alone; the
 industrial corpus mentioned in the paper is not required and not included.
 

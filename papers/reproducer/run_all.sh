@@ -71,4 +71,4 @@ python3 "$HERE/toy_hint_gadget.py"
 python3 "$HERE/taxonomy_runs.py"
 
 echo
-echo "all reproductions complete; artifacts under $OUT"
+echo "all reproductions complete; outputs under $OUT"
