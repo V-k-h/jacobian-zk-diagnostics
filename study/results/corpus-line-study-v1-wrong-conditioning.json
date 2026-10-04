@@ -1,10 +1,72 @@
 [
  {
+  "set": "motivating",
+  "circuit": "VDBuggy",
+  "constraints": 24,
+  "wires": 27,
+  "ronin_seconds": 4.48,
+  "ronin_verdict": "underconstrained",
+  "witnesses_verified": false,
+  "status": "cex-does-not-verify"
+ },
+ {
+  "set": "motivating",
+  "circuit": "VDFixed",
+  "constraints": 29,
+  "wires": 33,
+  "ronin_seconds": 2.83,
+  "ronin_verdict": "safe",
+  "status": "safe"
+ },
+ {
+  "set": "motivating",
+  "circuit": "ValidateDecodingBuggy",
+  "constraints": 3,
+  "wires": 5,
+  "ronin_seconds": 2.68,
+  "ronin_verdict": "underconstrained",
+  "witnesses_verified": true,
+  "nullity_a": 2,
+  "moving_outputs_a": 0,
+  "rT_outputs_a": 0,
+  "line_search_a": {
+   "complete": true,
+   "target_moving_line": false
+  },
+  "nullity_b": 2,
+  "moving_outputs_b": 0,
+  "rT_outputs_b": 0,
+  "line_search_b": {
+   "complete": true,
+   "target_moving_line": false
+  },
+  "picus_direction_at_a": "not-tangent",
+  "status": "analysed"
+ },
+ {
+  "set": "motivating",
+  "circuit": "ValidateDecodingFixed",
+  "constraints": 6,
+  "wires": 8,
+  "ronin_seconds": 2.69,
+  "ronin_verdict": "safe",
+  "status": "safe"
+ },
+ {
+  "set": "motivating",
+  "circuit": "adder",
+  "constraints": 9,
+  "wires": 9,
+  "ronin_seconds": 2.67,
+  "ronin_verdict": "safe",
+  "status": "safe"
+ },
+ {
   "set": "circomlib-cff5ab6",
   "circuit": "AND@gates",
   "constraints": 1,
   "wires": 4,
-  "ronin_seconds": 3.45,
+  "ronin_seconds": 2.62,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -13,7 +75,7 @@
   "circuit": "AliasCheck@aliascheck",
   "constraints": 521,
   "wires": 774,
-  "ronin_seconds": 3.07,
+  "ronin_seconds": 2.73,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -27,7 +89,7 @@
   "circuit": "BabyAdd@babyjub",
   "constraints": 6,
   "wires": 11,
-  "ronin_seconds": 43.08,
+  "ronin_seconds": 42.68,
   "ronin_verdict": "unknown",
   "status": "unknown"
  },
@@ -36,7 +98,7 @@
   "circuit": "BabyCheck@babyjub",
   "constraints": 3,
   "wires": 5,
-  "ronin_seconds": 3.51,
+  "ronin_seconds": 2.59,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -45,7 +107,7 @@
   "circuit": "BabyDbl@babyjub",
   "constraints": 12,
   "wires": 15,
-  "ronin_seconds": 3.18,
+  "ronin_seconds": 2.83,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -62,7 +124,7 @@
   "circuit": "BinSub@binsub",
   "constraints": 4,
   "wires": 8,
-  "ronin_seconds": 3.79,
+  "ronin_seconds": 3.05,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -71,7 +133,7 @@
   "circuit": "BinSum@binsum",
   "constraints": 4,
   "wires": 8,
-  "ronin_seconds": 3.34,
+  "ronin_seconds": 3.09,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -81,14 +143,14 @@
   "constraints": 24,
   "wires": 30,
   "status": "ronin-wall-timeout",
-  "ronin_seconds": 90.01
+  "ronin_seconds": 90.0
  },
  {
   "set": "circomlib-cff5ab6",
   "circuit": "Bits2Num@bitify",
   "constraints": 1,
   "wires": 4,
-  "ronin_seconds": 3.45,
+  "ronin_seconds": 3.07,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -97,7 +159,7 @@
   "circuit": "Bits2Num_strict@bitify",
   "constraints": 1031,
   "wires": 1284,
-  "ronin_seconds": 3.39,
+  "ronin_seconds": 2.94,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -106,27 +168,15 @@
   "circuit": "Bits2Point@pointbits",
   "constraints": 0,
   "wires": 259,
-  "ronin_seconds": 7.67,
+  "ronin_seconds": 2.83,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 2,
+  "nullity_a": 258,
   "moving_outputs_a": 2,
   "rT_outputs_a": 2,
-  "line_search_a": {
-   "complete": true,
-   "target_moving_line": true
-  },
-  "nullity_b": 2,
+  "nullity_b": 258,
   "moving_outputs_b": 2,
   "rT_outputs_b": 2,
-  "line_search_b": {
-   "complete": true,
-   "target_moving_line": true
-  },
   "picus_direction_at_a": "certified-line",
   "status": "analysed"
  },
@@ -143,7 +193,7 @@
   "circuit": "CompConstant@compconstant",
   "constraints": 266,
   "wires": 520,
-  "ronin_seconds": 3.99,
+  "ronin_seconds": 3.2,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -152,12 +202,8 @@
   "circuit": "Decoder@multiplexer",
   "constraints": 4,
   "wires": 5,
-  "ronin_seconds": 7.38,
+  "ronin_seconds": 2.97,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": false,
   "status": "cex-does-not-verify"
  },
@@ -166,7 +212,7 @@
   "circuit": "EdDSAMiMCSpongeVerifier@eddsamimcsponge",
   "constraints": 24316,
   "wires": 24315,
-  "ronin_seconds": 4.93,
+  "ronin_seconds": 4.03,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -175,7 +221,7 @@
   "circuit": "EdDSAMiMCVerifier@eddsamimc",
   "constraints": 21737,
   "wires": 21736,
-  "ronin_seconds": 4.84,
+  "ronin_seconds": 3.87,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -184,7 +230,7 @@
   "circuit": "EdDSAPoseidonVerifier@eddsaposeidon",
   "constraints": 21239,
   "wires": 21238,
-  "ronin_seconds": 4.41,
+  "ronin_seconds": 4.03,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -193,7 +239,7 @@
   "circuit": "EdDSAVerifier@eddsa",
   "constraints": 42920,
   "wires": 43661,
-  "ronin_seconds": 5.14,
+  "ronin_seconds": 4.38,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -202,23 +248,19 @@
   "circuit": "Edwards2Montgomery@montgomery",
   "constraints": 2,
   "wires": 5,
-  "ronin_seconds": 7.68,
+  "ronin_seconds": 3.02,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 1,
+  "nullity_a": 2,
   "moving_outputs_a": 1,
   "rT_outputs_a": 1,
   "line_search_a": {
    "complete": true,
    "target_moving_line": true
   },
-  "nullity_b": 1,
-  "moving_outputs_b": 1,
-  "rT_outputs_b": 1,
+  "nullity_b": 2,
+  "moving_outputs_b": 2,
+  "rT_outputs_b": 2,
   "line_search_b": {
    "complete": true,
    "target_moving_line": true
@@ -237,7 +279,7 @@
   "constraints": 67,
   "wires": 72,
   "status": "ronin-wall-timeout",
-  "ronin_seconds": 90.01
+  "ronin_seconds": 90.0
  },
  {
   "set": "circomlib-cff5ab6",
@@ -254,7 +296,7 @@
   "circuit": "EscalarProduct@multiplexer",
   "constraints": 3,
   "wires": 8,
-  "ronin_seconds": 5.09,
+  "ronin_seconds": 3.45,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -263,7 +305,7 @@
   "circuit": "ForceEqualIfEnabled@comparators",
   "constraints": 4,
   "wires": 7,
-  "ronin_seconds": 4.49,
+  "ronin_seconds": 2.88,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -272,7 +314,7 @@
   "circuit": "GreaterEqThan@comparators",
   "constraints": 9,
   "wires": 11,
-  "ronin_seconds": 4.3,
+  "ronin_seconds": 2.98,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -281,7 +323,7 @@
   "circuit": "GreaterThan@comparators",
   "constraints": 9,
   "wires": 11,
-  "ronin_seconds": 3.93,
+  "ronin_seconds": 3.03,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -290,7 +332,7 @@
   "circuit": "IsEqual@comparators",
   "constraints": 4,
   "wires": 7,
-  "ronin_seconds": 4.2,
+  "ronin_seconds": 3.04,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -299,7 +341,7 @@
   "circuit": "IsZero@comparators",
   "constraints": 2,
   "wires": 4,
-  "ronin_seconds": 3.64,
+  "ronin_seconds": 3.08,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -308,7 +350,7 @@
   "circuit": "LessEqThan@comparators",
   "constraints": 9,
   "wires": 11,
-  "ronin_seconds": 3.73,
+  "ronin_seconds": 3.04,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -317,7 +359,7 @@
   "circuit": "LessThan@comparators",
   "constraints": 6,
   "wires": 8,
-  "ronin_seconds": 3.57,
+  "ronin_seconds": 3.05,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -326,7 +368,7 @@
   "circuit": "MiMC7@mimc",
   "constraints": 8,
   "wires": 11,
-  "ronin_seconds": 3.78,
+  "ronin_seconds": 2.96,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -335,7 +377,7 @@
   "circuit": "MiMCFeistel@mimcsponge",
   "constraints": 8,
   "wires": 12,
-  "ronin_seconds": 3.54,
+  "ronin_seconds": 2.99,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -344,7 +386,7 @@
   "circuit": "MiMCSponge@mimcsponge",
   "constraints": 35,
   "wires": 39,
-  "ronin_seconds": 3.46,
+  "ronin_seconds": 2.92,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -358,23 +400,19 @@
   "circuit": "Montgomery2Edwards@montgomery",
   "constraints": 2,
   "wires": 5,
-  "ronin_seconds": 7.31,
+  "ronin_seconds": 3.08,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 1,
+  "nullity_a": 2,
   "moving_outputs_a": 1,
   "rT_outputs_a": 1,
   "line_search_a": {
    "complete": true,
    "target_moving_line": true
   },
-  "nullity_b": 1,
-  "moving_outputs_b": 1,
-  "rT_outputs_b": 1,
+  "nullity_b": 2,
+  "moving_outputs_b": 2,
+  "rT_outputs_b": 2,
   "line_search_b": {
    "complete": true,
    "target_moving_line": true
@@ -387,27 +425,15 @@
   "circuit": "MontgomeryAdd@montgomery",
   "constraints": 3,
   "wires": 8,
-  "ronin_seconds": 8.41,
+  "ronin_seconds": 2.98,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 1,
-  "moving_outputs_a": 1,
-  "rT_outputs_a": 1,
-  "line_search_a": {
-   "complete": true,
-   "target_moving_line": false
-  },
-  "nullity_b": 1,
+  "nullity_a": 4,
+  "moving_outputs_a": 2,
+  "rT_outputs_a": 2,
+  "nullity_b": 4,
   "moving_outputs_b": 2,
-  "rT_outputs_b": 1,
-  "line_search_b": {
-   "complete": true,
-   "target_moving_line": false
-  },
+  "rT_outputs_b": 2,
   "picus_direction_at_a": "not-tangent",
   "status": "analysed"
  },
@@ -416,21 +442,17 @@
   "circuit": "MontgomeryDouble@montgomery",
   "constraints": 4,
   "wires": 7,
-  "ronin_seconds": 8.21,
+  "ronin_seconds": 3.19,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 1,
+  "nullity_a": 2,
   "moving_outputs_a": 1,
   "rT_outputs_a": 1,
   "line_search_a": {
    "complete": true,
-   "target_moving_line": false
+   "target_moving_line": true
   },
-  "nullity_b": 1,
+  "nullity_b": 2,
   "moving_outputs_b": 2,
   "rT_outputs_b": 1,
   "line_search_b": {
@@ -445,7 +467,7 @@
   "circuit": "MultiAND@gates",
   "constraints": 4,
   "wires": 7,
-  "ronin_seconds": 4.38,
+  "ronin_seconds": 2.92,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -454,7 +476,7 @@
   "circuit": "MultiMiMC7@mimc",
   "constraints": 24,
   "wires": 28,
-  "ronin_seconds": 3.37,
+  "ronin_seconds": 2.88,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -463,7 +485,7 @@
   "circuit": "MultiMux1@mux1",
   "constraints": 2,
   "wires": 8,
-  "ronin_seconds": 3.86,
+  "ronin_seconds": 3.01,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -472,7 +494,7 @@
   "circuit": "MultiMux2@mux2",
   "constraints": 11,
   "wires": 22,
-  "ronin_seconds": 3.91,
+  "ronin_seconds": 2.99,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -481,7 +503,7 @@
   "circuit": "MultiMux3@mux3",
   "constraints": 19,
   "wires": 39,
-  "ronin_seconds": 3.85,
+  "ronin_seconds": 2.92,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -490,7 +512,7 @@
   "circuit": "MultiMux4@mux4",
   "constraints": 38,
   "wires": 75,
-  "ronin_seconds": 3.81,
+  "ronin_seconds": 2.97,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -499,7 +521,7 @@
   "circuit": "Multiplexer@multiplexer",
   "constraints": 22,
   "wires": 26,
-  "ronin_seconds": 3.45,
+  "ronin_seconds": 3.12,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -508,7 +530,7 @@
   "circuit": "Multiplexor2@escalarmulany",
   "constraints": 2,
   "wires": 8,
-  "ronin_seconds": 3.51,
+  "ronin_seconds": 2.85,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -517,7 +539,7 @@
   "circuit": "Mux1@mux1",
   "constraints": 5,
   "wires": 9,
-  "ronin_seconds": 3.96,
+  "ronin_seconds": 2.97,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -526,7 +548,7 @@
   "circuit": "Mux2@mux2",
   "constraints": 13,
   "wires": 20,
-  "ronin_seconds": 3.61,
+  "ronin_seconds": 3.03,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -535,7 +557,7 @@
   "circuit": "Mux3@mux3",
   "constraints": 22,
   "wires": 34,
-  "ronin_seconds": 4.09,
+  "ronin_seconds": 3.0,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -544,7 +566,7 @@
   "circuit": "Mux4@mux4",
   "constraints": 42,
   "wires": 63,
-  "ronin_seconds": 3.55,
+  "ronin_seconds": 3.03,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -553,7 +575,7 @@
   "circuit": "NAND@gates",
   "constraints": 1,
   "wires": 4,
-  "ronin_seconds": 3.38,
+  "ronin_seconds": 3.06,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -562,7 +584,7 @@
   "circuit": "NOR@gates",
   "constraints": 1,
   "wires": 4,
-  "ronin_seconds": 4.1,
+  "ronin_seconds": 3.01,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -571,7 +593,7 @@
   "circuit": "NOT@gates",
   "constraints": 1,
   "wires": 3,
-  "ronin_seconds": 3.57,
+  "ronin_seconds": 3.0,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -580,7 +602,7 @@
   "circuit": "Num2Bits@bitify",
   "constraints": 3,
   "wires": 4,
-  "ronin_seconds": 3.79,
+  "ronin_seconds": 2.92,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -589,7 +611,7 @@
   "circuit": "Num2BitsNeg@bitify",
   "constraints": 6,
   "wires": 7,
-  "ronin_seconds": 4.14,
+  "ronin_seconds": 3.08,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -606,7 +628,7 @@
   "circuit": "OR@gates",
   "constraints": 1,
   "wires": 4,
-  "ronin_seconds": 4.23,
+  "ronin_seconds": 3.27,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -615,23 +637,19 @@
   "circuit": "Pedersen@pedersen",
   "constraints": 114,
   "wires": 117,
-  "ronin_seconds": 61.59,
+  "ronin_seconds": 37.56,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 1,
+  "nullity_a": 2,
   "moving_outputs_a": 1,
   "rT_outputs_a": 1,
   "line_search_a": {
    "complete": true,
    "target_moving_line": true
   },
-  "nullity_b": 1,
-  "moving_outputs_b": 1,
-  "rT_outputs_b": 1,
+  "nullity_b": 2,
+  "moving_outputs_b": 2,
+  "rT_outputs_b": 2,
   "line_search_b": {
    "complete": true,
    "target_moving_line": true
@@ -644,7 +662,7 @@
   "circuit": "Pedersen@pedersen_old",
   "constraints": 100,
   "wires": 103,
-  "ronin_seconds": 4.9,
+  "ronin_seconds": 3.33,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -653,17 +671,13 @@
   "circuit": "Point2Bits@pointbits",
   "constraints": 0,
   "wires": 259,
-  "ronin_seconds": 8.51,
+  "ronin_seconds": 3.04,
   "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
   "witnesses_verified": true,
-  "nullity_a": 256,
+  "nullity_a": 258,
   "moving_outputs_a": 256,
   "rT_outputs_a": 256,
-  "nullity_b": 256,
+  "nullity_b": 258,
   "moving_outputs_b": 256,
   "rT_outputs_b": 256,
   "picus_direction_at_a": "certified-line",
@@ -682,7 +696,7 @@
   "circuit": "Poseidon@poseidon",
   "constraints": 761,
   "wires": 764,
-  "ronin_seconds": 6.25,
+  "ronin_seconds": 3.6,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -692,7 +706,7 @@
   "constraints": 221,
   "wires": 232,
   "status": "ronin-wall-timeout",
-  "ronin_seconds": 90.01
+  "ronin_seconds": 90.0
  },
  {
   "set": "circomlib-cff5ab6",
@@ -715,7 +729,7 @@
   "circuit": "Sigma@poseidon",
   "constraints": 3,
   "wires": 5,
-  "ronin_seconds": 7.09,
+  "ronin_seconds": 3.52,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -724,7 +738,7 @@
   "circuit": "Sign@sign",
   "constraints": 521,
   "wires": 775,
-  "ronin_seconds": 7.26,
+  "ronin_seconds": 3.58,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -733,7 +747,7 @@
   "circuit": "Switcher@switcher",
   "constraints": 3,
   "wires": 7,
-  "ronin_seconds": 7.11,
+  "ronin_seconds": 3.49,
   "ronin_verdict": "safe",
   "status": "safe"
  },
@@ -743,7 +757,7 @@
   "constraints": 90,
   "wires": 97,
   "status": "ronin-wall-timeout",
-  "ronin_seconds": 90.02
+  "ronin_seconds": 90.0
  },
  {
   "set": "circomlib-cff5ab6",
@@ -751,76 +765,14 @@
   "constraints": 90,
   "wires": 96,
   "status": "ronin-wall-timeout",
-  "ronin_seconds": 90.02
+  "ronin_seconds": 90.01
  },
  {
   "set": "circomlib-cff5ab6",
   "circuit": "XOR@gates",
   "constraints": 1,
   "wires": 4,
-  "ronin_seconds": 7.67,
-  "ronin_verdict": "safe",
-  "status": "safe"
- },
- {
-  "set": "motivating",
-  "circuit": "VDBuggy",
-  "constraints": 24,
-  "wires": 27,
-  "ronin_seconds": 9.44,
-  "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
-  "witnesses_verified": false,
-  "status": "cex-does-not-verify"
- },
- {
-  "set": "motivating",
-  "circuit": "VDFixed",
-  "constraints": 29,
-  "wires": 33,
-  "ronin_seconds": 7.57,
-  "ronin_verdict": "safe",
-  "status": "safe"
- },
- {
-  "set": "motivating",
-  "circuit": "ValidateDecodingBuggy",
-  "constraints": 3,
-  "wires": 5,
-  "ronin_seconds": 7.26,
-  "ronin_verdict": "underconstrained",
-  "zero_filled_a": 0,
-  "zero_filled_b": 0,
-  "pair_agrees_on_inputs": true,
-  "unprinted_conditioned_wires": 0,
-  "witnesses_verified": true,
-  "nullity_a": 0,
-  "moving_outputs_a": 0,
-  "rT_outputs_a": 0,
-  "nullity_b": 0,
-  "moving_outputs_b": 0,
-  "rT_outputs_b": 0,
-  "picus_direction_at_a": "not-tangent",
-  "status": "analysed"
- },
- {
-  "set": "motivating",
-  "circuit": "ValidateDecodingFixed",
-  "constraints": 6,
-  "wires": 8,
-  "ronin_seconds": 7.31,
-  "ronin_verdict": "safe",
-  "status": "safe"
- },
- {
-  "set": "motivating",
-  "circuit": "adder",
-  "constraints": 9,
-  "wires": 9,
-  "ronin_seconds": 6.54,
+  "ronin_seconds": 5.58,
   "ronin_verdict": "safe",
   "status": "safe"
  }

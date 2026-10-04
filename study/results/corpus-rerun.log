@@ -1,0 +1,10 @@
+circomlib-cff5ab6/Bits2Point@pointbits               analysed               c=     0 verdict=underconstrained nullity(a)=2 rT(a)=2 dir=certified-line
+circomlib-cff5ab6/Edwards2Montgomery@montgomery      analysed               c=     2 verdict=underconstrained nullity(a)=1 rT(a)=1 dir=certified-line
+circomlib-cff5ab6/Montgomery2Edwards@montgomery      analysed               c=     2 verdict=underconstrained nullity(a)=1 rT(a)=1 dir=certified-line
+circomlib-cff5ab6/MontgomeryAdd@montgomery           analysed               c=     3 verdict=underconstrained nullity(a)=1 rT(a)=1 dir=not-tangent
+circomlib-cff5ab6/MontgomeryDouble@montgomery        analysed               c=     4 verdict=underconstrained nullity(a)=1 rT(a)=1 dir=not-tangent
+circomlib-cff5ab6/Pedersen@pedersen                  analysed               c=   114 verdict=underconstrained nullity(a)=1 rT(a)=1 dir=certified-line
+circomlib-cff5ab6/Point2Bits@pointbits               analysed               c=     0 verdict=underconstrained nullity(a)=256 rT(a)=256 dir=certified-line
+motivating/ValidateDecodingBuggy              analysed               c=     3 verdict=underconstrained nullity(a)=0 rT(a)=0 dir=not-tangent
+
+78 circuits; 8 underconstrained-with-cex analysed; results -> /Users/vijay/projects/zk-soundness/zk-soundness-monitor/papers/study-2026-10-03/results/corpus-line-study.json

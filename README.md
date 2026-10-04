@@ -52,7 +52,7 @@ certificates; the first build compiles mathlib and takes a while).
 | Advisory pair, ScalarMul: v0.14.0 forgery accepted / v0.16.2 rejected at `groth16.Prove` | `make advisory` → `study/exporter-patched` (`prove`), `study/exporter-advisory` |
 | Advisory pair, emulated ModMul: shifted-remainder forgery + diagnostic | `make advisory` → `study/exporter-patched` (`modmul`), `study/exporter-advisory` |
 | Commitment-as-advice relaxation measurements | `make advisory` → `study/exporter-patched` (`advice`) + `study/analyze.py` |
-| Corpus line-certificate coverage (78 circom/Picus circuits) | `study/corpus_line_study.py --circom <bin> --ronin <dir> --bench <dir>` (external deps; measured outputs committed under `study/results/`) |
+| Corpus line-certificate coverage (78 circom/Picus circuits) | `study/corpus_line_study.py --circom <bin> --ronin <dir> --bench <dir>` (external deps, pinned: circom 2.2.3 built from source, ronin c4e95c6 with cvc5 1.3.1 and Racket 9.2; measured outputs committed under `study/results/`) |
 | Kernel-checked certificates (redundancy differential step, affine-line and parabola expansions) | `make lean` → `lean/RedundancyCert.lean`, `lean/AffineLineCert.lean` |
 
 Pre-exported instances for the two case studies (`circuit.r1cs.json`, honest and

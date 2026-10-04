@@ -1,0 +1,20 @@
+{"caller":"picus/tmpdir.rkt:13:4","level":"INFO","logger_name":"picus","msg":"working directory: /var/folders/82/z0lchkb91kj5k4pxkgxxjpgr0000gn/T/picus17911094331791109433577","timestamp":"2026-10-04T03:23:53"}
+{"caller":"picus/reader.rkt:105:12","level":"WARNING","logger_name":"picus","msg":"/var/folders/82/z0lchkb91kj5k4pxkgxxjpgr0000gn/T/tmphoqe4ro1/MontgomeryDouble@montgomery.sym does not exist","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:258:5","level":"INFO","logger_name":"picus","msg":"The circuit is underconstrained","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:259:5","level":"INFO","logger_name":"picus","msg":"Counterexample:","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:242:4","level":"INFO","logger_name":"picus","msg":"  inputs:","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    3: 19227208690775748531865437331126676461733156385287048589618245965417551240156","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    4: 0","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:242:4","level":"INFO","logger_name":"picus","msg":"  first possible outputs:","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    1: 5322068362127053380761936828261197253630416030257971508159916442316514342224","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    2: 0","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:242:4","level":"INFO","logger_name":"picus","msg":"  second possible outputs:","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    1: 0","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    2: 11395287471962378606215025428882238971762841540906324053591198862844560648166","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:242:4","level":"INFO","logger_name":"picus","msg":"  first internal variables:","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    5: 0","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    6: 18039640916646237372880335511686420348069741665070947478680356439334569097561","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:242:4","level":"INFO","logger_name":"picus","msg":"  second internal variables:","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    5: 1919201053887612038854394017032965582736186453021883147377541836331787784350","timestamp":"2026-10-04T03:23:53"}
+{"caller":"ronin.rkt:244:6","level":"INFO","logger_name":"picus","msg":"    6: 18039640916646237372880335511686420348069741665070947478680356439334569097561","timestamp":"2026-10-04T03:23:53"}
+{"caller":"picus/exit.rkt:19:2","level":"INFO","logger_name":"picus","msg":"Exiting ronin with the code 9","timestamp":"2026-10-04T03:23:53"}

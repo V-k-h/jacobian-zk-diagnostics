@@ -100,10 +100,14 @@ def parse_cex(log_path, n):
                 else:
                     second[w] = v
     if verdict != "underconstrained" or len(first) < 2:
-        return verdict, None, None
+        return verdict, None, None, 0, 0, set()
     a = [first.get(i, 0) for i in range(n)]
     b = [second.get(i, 0) for i in range(n)]
-    return verdict, a, b
+    # Coordinates the solver never printed are zero-filled; report how many,
+    # so a verification failure can be attributed to reconstruction rather
+    # than to the solver's answer, and report which wires were printed so
+    # input agreement can be stated against the complete input set.
+    return verdict, a, b, n - len(first), n - len(second), set(first) | set(second)
 
 
 def diagnose(p, rows, witness, fixed, outputs):
@@ -140,6 +144,9 @@ def main():
     ap.add_argument("--sets", default="circomlib-cff5ab6,motivating")
     ap.add_argument("--budget", type=float, default=60.0)
     ap.add_argument("--max-constraints", type=int, default=50000)
+    ap.add_argument("--only", default=None,
+                    help="comma-separated circuit stems to run (default: all)")
+    ap.add_argument("--out", default="results/corpus-line-study.json")
     args = ap.parse_args()
 
     bench = Path(args.bench)
@@ -147,6 +154,8 @@ def main():
     for setname in args.sets.split(","):
         for src in sorted((bench / setname).glob("*.circom")):
             if "component main" not in src.read_text():
+                continue
+            if args.only and src.stem not in args.only.split(","):
                 continue
             rec = {"set": setname, "circuit": src.stem}
             with tempfile.TemporaryDirectory() as td:
@@ -181,21 +190,23 @@ def main():
                     rec["ronin_seconds"] = round(time.perf_counter() - t0, 2)
                     results.append(rec)
                     continue
-                verdict, a, b = parse_cex(log, mon["n_wires"]) if log.exists() else ("no-log", None, None)
+                verdict, a, b, miss_a, miss_b, printed = parse_cex(log, mon["n_wires"]) if log.exists() else ("no-log", None, None, 0, 0, set())
                 rec["ronin_verdict"] = verdict
+                # archive the raw solver log for every counterexample claim
+                if verdict == "underconstrained" and log.exists():
+                    raw_dir = ROOT / "results" / "cex-logs"
+                    raw_dir.mkdir(parents=True, exist_ok=True)
+                    (raw_dir / f"{src.stem}.jsonl").write_bytes(log.read_bytes())
                 if a is None:
                     rec["status"] = verdict
                     results.append(rec)
                     continue
 
                 p, rows = to_forms(mon)
-                # iden3 wire classes: [ONE][pubout][pubin][prvin][internal]
-                hdr_out = mon["n_public"] - 1  # reader folds out+in into n_public
-                # recover output count from the raw header
-                outputs = [j for j in range(1, mon["n_public"]) ]
-                fixed = [0] + [j for j in range(1, mon["n_public"]) if j not in outputs]
-                # ronin's query: outputs = circom main outputs = wires 1..nPubOut.
-                # The reader reports n_pub_out inside load(); recover it directly:
+                # iden3 wire classes: [ONE][pubout][pubin][prvin][internal].
+                # ronin's query: outputs = circom main outputs = wires 1..nPubOut,
+                # conditioned on EVERY declared input, public and private alike.
+                # Recover nPubOut from the raw header:
                 raw = open(r1cs_files[0], "rb").read()
                 import struct
                 off = 12
@@ -209,12 +220,26 @@ def main():
                         break
                     off += size
                 outputs = list(range(1, 1 + (n_pub_out or 0)))
-                fixed = [0] + list(range(1 + len(outputs), mon["n_public"]))
+                fixed = ([0] + list(range(1 + len(outputs), mon["n_public"]))
+                         + list(range(mon["n_public"], mon["n_public"] + mon["n_secret"])))
+                rec["zero_filled_a"], rec["zero_filled_b"] = miss_a, miss_b
+                disagree = [j for j in fixed if a[j] != b[j]]
+                rec["pair_agrees_on_inputs"] = not disagree
+                # conditioned wires the solver never printed: their agreement is
+                # vacuous (both zero-filled), so report them explicitly
+                rec["unprinted_conditioned_wires"] = len([j for j in fixed if j not in printed])
+                if disagree:
+                    rec["status"] = "cex-disagrees-on-inputs"
+                    results.append(rec)
+                    continue
                 bad_a = any(row_value(r, a, p) for r in rows)
                 bad_b = any(row_value(r, b, p) for r in rows)
                 rec["witnesses_verified"] = (not bad_a) and (not bad_b)
                 if bad_a or bad_b:
-                    rec["status"] = "cex-does-not-verify"
+                    # zero-filled coordinates make this a reconstruction failure,
+                    # not an established wrong answer from the solver
+                    rec["status"] = ("cex-reconstruction-failed"
+                                     if (miss_a or miss_b) else "cex-does-not-verify")
                     results.append(rec)
                     continue
                 for tag, w in (("a", a), ("b", b)):
@@ -238,7 +263,7 @@ def main():
                   f"nullity(a)={rec.get('nullity_a','-')} rT(a)={rec.get('rT_outputs_a','-')} "
                   f"dir={rec.get('picus_direction_at_a','-')}")
 
-    out = ROOT / "results" / "corpus-line-study.json"
+    out = Path(args.out) if Path(args.out).is_absolute() else ROOT / args.out
     out.write_text(json.dumps(results, indent=1) + "\n")
     done = [r for r in results if r.get("status") == "analysed"]
     print(f"\n{len(results)} circuits; {len(done)} underconstrained-with-cex analysed; "

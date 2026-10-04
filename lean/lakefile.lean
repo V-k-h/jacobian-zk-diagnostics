@@ -9,5 +9,6 @@ require mathlib from git
 @[default_target] lean_lib «R1CSChecker» where
 @[default_target] lean_lib «AffineLineCert» where
 @[default_target] lean_lib «RedundancyCert» where
+@[default_target] lean_lib «Multiplicity» where
 @[default_target] lean_lib «GnarkCheckDemo» where
 @[default_target] lean_lib «GnarkFullDemo» where

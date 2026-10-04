@@ -29,6 +29,8 @@ study:
 	cd study && STUDY_EXPORTS_DIR=exports python3 line_search.py
 	cd study && STUDY_EXPORTS_DIR=exports python3 parabola_certificate.py
 	cd study && STUDY_EXPORTS_DIR=exports python3 groebner_slice.py
+	cd study && python3 run_measurements.py
+	cd study && python3 solve_ablation.py
 
 # The vulnerable/patched advisory pairs (GHSA-3mvx-pp85-pm65): ScalarMul under
 # gnark v0.14.0 vs v0.16.2 including Groth16 prove-level checks, and the
