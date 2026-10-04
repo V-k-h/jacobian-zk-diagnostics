@@ -1,0 +1,166 @@
+{
+  "circuit": "scalarmul",
+  "r1cs": "circuit.r1cs.json",
+  "n_wires": 2398,
+  "n_constraints": 2396,
+  "used_hints": 3,
+  "variants": [
+    {
+      "name": "honest",
+      "witness": "wit.honest.json",
+      "solved": true,
+      "outcome": "solved"
+    },
+    {
+      "name": "h1399717548-zero",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 1399717548,
+      "strategy": "zero"
+    },
+    {
+      "name": "h1399717548-one",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 1399717548,
+      "strategy": "one"
+    },
+    {
+      "name": "h1399717548-edwards-identity",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 1399717548,
+      "strategy": "edwards-identity"
+    },
+    {
+      "name": "h1399717548-first-zero",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 1399717548,
+      "strategy": "first-zero"
+    },
+    {
+      "name": "h1399717548-noncanonical-bits",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 1399717548,
+      "strategy": "noncanonical-bits"
+    },
+    {
+      "name": "h1399717548-bit-lsb-flip",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 1399717548,
+      "strategy": "bit-lsb-flip"
+    },
+    {
+      "name": "h726531982-zero",
+      "witness": "wit.h726531982-zero.json",
+      "solved": true,
+      "outcome": "solved",
+      "hint_id": 726531982,
+      "strategy": "zero"
+    },
+    {
+      "name": "h726531982-one",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 726531982,
+      "strategy": "one"
+    },
+    {
+      "name": "h726531982-edwards-identity",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 726531982,
+      "strategy": "edwards-identity"
+    },
+    {
+      "name": "h726531982-first-zero",
+      "witness": "wit.h726531982-first-zero.json",
+      "solved": true,
+      "outcome": "solved",
+      "hint_id": 726531982,
+      "strategy": "first-zero"
+    },
+    {
+      "name": "h726531982-noncanonical-bits",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 726531982,
+      "strategy": "noncanonical-bits"
+    },
+    {
+      "name": "h726531982-bit-lsb-flip",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 726531982,
+      "strategy": "bit-lsb-flip"
+    },
+    {
+      "name": "h4115454955-zero",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 4115454955,
+      "strategy": "zero"
+    },
+    {
+      "name": "h4115454955-one",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 4115454955,
+      "strategy": "one"
+    },
+    {
+      "name": "h4115454955-edwards-identity",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 4115454955,
+      "strategy": "edwards-identity"
+    },
+    {
+      "name": "h4115454955-first-zero",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 4115454955,
+      "strategy": "first-zero"
+    },
+    {
+      "name": "h4115454955-noncanonical-bits",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 4115454955,
+      "strategy": "noncanonical-bits"
+    },
+    {
+      "name": "h4115454955-bit-lsb-flip",
+      "solved": false,
+      "outcome": "infeasible",
+      "detail": "constraints reject this degeneracy (a sound-gadget signal)",
+      "hint_id": 4115454955,
+      "strategy": "bit-lsb-flip"
+    },
+    {
+      "name": "all-hints-zero",
+      "witness": "wit.all-hints-zero.json",
+      "solved": true,
+      "outcome": "solved",
+      "strategy": "zero"
+    }
+  ]
+}
