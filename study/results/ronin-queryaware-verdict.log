@@ -1,0 +1,10 @@
+# ronin (Picus-derived relational solver, cvc5 1.3.1 backend) on the query-aware
+# ScalarMul export (/tmp/scalarmul_queryaware.r1cs, 2,398 constraints, outputs
+# QX,QY declared via r1cs_to_iden3 --outputs).
+# Command: racket ronin.rkt --timeout 60000 /tmp/scalarmul_queryaware.r1cs
+# (60 s per-SMT-query budget; ronin c4e95c6; machine of tab:scale)
+# Started 2026-10-04 03:38:35 local, finished 2026-10-07 01:53:16: ~70.2 hours.
+# Raw output:
+/tmp/scalarmul_queryaware.sym does not exist
+Cannot determine whether the circuit is properly constrained
+Exiting ronin with the code 0
