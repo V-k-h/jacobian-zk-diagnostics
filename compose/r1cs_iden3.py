@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""r1cs_iden3 — read the iden3 binary `.r1cs` format into this project's R1CS JSON shape.
+"""r1cs_iden3, read the iden3 binary `.r1cs` format into this project's R1CS JSON shape.
 
 WHY THIS EXISTS. The diagnostic and the certificate engines consume one thing: an R1CS. They
 were built against the gnark exporter's JSON, but nothing in them is gnark-specific. This
@@ -12,8 +12,8 @@ FORMAT (little-endian throughout):
     per section: u32 type | u64 size | payload
       type 1 header : u32 fieldSize | prime[fieldSize] | u32 nWires
                       u32 nPubOut | u32 nPubIn | u32 nPrvIn | u64 nLabels | u32 nConstraints
-      type 2 cons   : per constraint, three LCs A,B,C — each u32 nnz then nnz*(u32 wire,
-                      coeff[fieldSize]) — meaning (A.x)*(B.x) == (C.x)
+      type 2 cons   : per constraint, three LCs A,B,C, each u32 nnz then nnz*(u32 wire,
+                      coeff[fieldSize]), meaning (A.x)*(B.x) == (C.x)
       type 3 w2l    : wire -> label map (ignored; we key on wire id)
 
 WIRE CLASSES. iden3 orders wires [ONE=0][public outputs][public inputs][private inputs]

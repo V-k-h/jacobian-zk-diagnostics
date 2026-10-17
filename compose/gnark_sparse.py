@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""gnark_sparse — sparse exact-F_p rank / nullspace-support, to push the Jacobian
+"""gnark_sparse, sparse exact-F_p rank / nullspace-support, to push the Jacobian
 determinacy oracle past the dense O(n^3) ceiling (~6k wires) to the EdDSA circuits
 (21k+ wires).
 
 R1CS Jacobians are very sparse (each constraint touches a handful of wires) and
 near-triangular (each internal wire is introduced by one constraint), so sparse
 Gaussian elimination with fill-reducing (Markowitz) pivoting stays near-linear.
-Unlike Wiedemann (rank only), echelon form yields the NULLSPACE SUPPORT directly —
-the set of under-determined wires — which is what the determinacy decomposition needs.
+Unlike Wiedemann (rank only), echelon form yields the NULLSPACE SUPPORT directly, 
+the set of under-determined wires, which is what the determinacy decomposition needs.
 
   sparse_support(rows, ncols, p) -> (rank, undetermined_cols:set)
 
@@ -74,7 +74,7 @@ def _elim(rows, ncols, p):
                     col_rows.get(k, set()).discard(i)
             # c is now zero in ri
         col_rows[c] = set()
-        # push any columns whose degree changed (touched by fill) — lazily via staleness
+        # push any columns whose degree changed (touched by fill), lazily via staleness
         for k in prow:
             if k != c and k not in pivots and col_rows.get(k):
                 heapq.heappush(heap, (len(col_rows[k]), k))

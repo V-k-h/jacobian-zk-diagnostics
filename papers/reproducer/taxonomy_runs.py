@@ -2,15 +2,15 @@
 """Measured runs of the actual Jacobian tool (compose/gnark_jacobian.py) across the
 three field-level taxonomy classes, on representative R1CS instances.
 
-CAUGHT  — free hint on a vacuous verification branch (advisory classes #2/#7/#9/#11):
+CAUGHT, free hint on a vacuous verification branch (advisory classes #2/#7/#9/#11):
           s*(y-u)=0 with s a selector; at the honest branch s=1 the hint y is pinned to u,
           at the prover-reachable branch s=0 the row is vacuous and y is first-order free.
-MISSED (finite multiplicity, within model) — w^2 = x: rigid at each root though 2-valued
+MISSED (finite multiplicity, within model), w^2 = x: rigid at each root though 2-valued
           (advisory classes #3/#6: discrete alternative decompositions / sign).
-MISSED (range / integer-vs-field, within model) — b*(b-1)=0: the mod-p relation determines b,
+MISSED (range / integer-vs-field, within model), b*(b-1)=0: the mod-p relation determines b,
           so a mod-p rank test reports "determined"; the exploit lives in the integer/range gap
           the field-level relation does not see (advisory classes #1/#4/#8).
-OFF-MODEL (#5, semantic omission) — not runnable: the R1CS is fully satisfied and determined;
+OFF-MODEL (#5, semantic omission), not runnable: the R1CS is fully satisfied and determined;
           the defect is a missing subgroup/cofactor invariant absent from the encoded relation,
           so there is no field-level freedom for any rank/solver/matroid method to expose.
 
@@ -67,7 +67,7 @@ def main():
     assert caught_degen and honest_pinned and mult_missed and range_missed, "taxonomy not reproduced"
     print("\nOK: caught the free-hint class at the degenerate branch; "
           "missed finite-multiplicity and range as predicted.")
-    print("OFF-MODEL (#5 cofactor/torsion): not runnable — the R1CS is fully determined; "
+    print("OFF-MODEL (#5 cofactor/torsion): not runnable: the R1CS is fully determined; "
           "no field-level method can expose a missing subgroup invariant.")
 
 

@@ -1,23 +1,23 @@
 #!/usr/bin/env python3
-"""gnark_lean_codegen — transcribe a determinacy certificate into a kernel-checkable Lean file.
+"""gnark_lean_codegen, transcribe a determinacy certificate into a kernel-checkable Lean file.
 
 Takes an R1CS JSON + the derivation certificate (gnark_certificate.emit) and emits a Lean file
 over `ZMod p` (p = the circuit's field) that the Lean kernel checks: it defines the constraint
-system `sat`, and proves `determined` — that any two satisfying assignments agreeing on the inputs
-agree on every functionally-determined wire — by replaying the certificate, one `R1CSCert.funpin_one`
+system `sat`, and proves `determined`, that any two satisfying assignments agreeing on the inputs
+agree on every functionally-determined wire, by replaying the certificate, one `R1CSCert.funpin_one`
 application per step, threading agreement with `R1CSCert.agree_cons`. Every side condition (wire ∈ S)
 is discharged by `by decide`.
 
 This pass handles the FUNCTIONAL pins (all of which gnark emits with coefficient 1, so `funpin_one`
 applies and no field/primality is needed). is-zero / bit-decomp / guarded steps are the extension
 (their leaf lemmas are already in GnarkR1CS.lean / BitDecomp.lean); a circuit whose determined set is
-entirely functional is proved COMPLETELY here — turning its SAFE* determinacy into a Lean theorem.
+entirely functional is proved COMPLETELY here, turning its SAFE* determinacy into a Lean theorem.
 
-SCOPE / scaling (honest): the emitted proof is UNROLLED — one `have` per wire plus a single `obtain`
+SCOPE / scaling (honest): the emitted proof is UNROLLED; one `have` per wire plus a single `obtain`
 that destructures the whole constraint conjunction. That kernel-checks for small circuits (see the
 committed `GnarkCertDemo`), but does NOT scale: a 264-constraint Poseidon gadget did not finish in
 45+ min (the deep-conjunction `obtain` and per-step elaboration are ~O(n²)). The scalable design is a
-verified CHECKER — prove once that a decidable `validate cs cert` implies determinacy, then per circuit
+verified CHECKER, prove once that a decidable `validate cs cert` implies determinacy, then per circuit
 emit only DATA + one `decide`/`native_decide`; that is O(n) but a separate development. Until then this
 pass is a *mechanism demonstration* (a real, kernel-checked determinacy theorem for small circuits),
 not a production path for the 6k–33k-wire suite.
@@ -88,7 +88,7 @@ def codegen(r1cs_path, out_path, ns="GnarkCert"):
 
     # inline the reusable R1CSCert core (single source of truth: read lean/R1CSCert.lean's
     # `namespace R1CSCert … end R1CSCert` block) so the generated file is self-verifying with
-    # `lake env lean` — matching this project's standalone-file convention (no prebuilt oleans).
+    # `lake env lean`, matching this project's standalone-file convention (no prebuilt oleans).
     import os
     core_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lean", "R1CSCert.lean")
     core_src = open(core_path).read()
@@ -127,7 +127,7 @@ def codegen(r1cs_path, out_path, ns="GnarkCert"):
     out.append(f"def DET : List ℕ := {_natlist(final_list)}")
     out.append("")
     out.append("/-- Any two satisfying assignments agreeing on the inputs `I` agree on every")
-    out.append("    functionally-determined wire `DET` — the circuit's determinacy, kernel-checked. -/")
+    out.append("    functionally-determined wire `DET`, the circuit's determinacy, kernel-checked. -/")
     out.append("theorem determined (a a' : ℕ → ZMod p) (ha : sat a) (ha' : sat a')")
     out.append("    (hI : R1CSCert.agree I a a') : R1CSCert.agree DET a a' := by")
     # destructure the constraint system ONCE (avoids a deep projection into the conjunction)
@@ -159,7 +159,7 @@ def codegen(r1cs_path, out_path, ns="GnarkCert"):
 
 def codegen_checker(r1cs_path, out_path, ns="GnarkCheck"):
     """SCALABLE codegen: emit DATA (the constraint list + inputs) and a one-line determinacy theorem
-    `R1CSChecker.fold_sound cs I` — no per-step proof. The determined set is `cs.foldl stepPin I`,
+    `R1CSChecker.fold_sound cs I`; no per-step proof. The determined set is `cs.foldl stepPin I`,
     reduced by `native_decide`. O(n) to elaborate; the fold reduction is the only cost."""
     import os
     sys_ = json.load(open(r1cs_path))
@@ -245,7 +245,7 @@ def codegen_foldc(r1cs_path, out_path, ns="GnarkCheck"):
     else is emitted faithfully (a non-pin leaves the fold unchanged, so its order is immaterial).
 
     The determinacy THEOREM needs `[Fact (Nat.Prime p)]` (the ZMod-p Field, for is-zero cancellation)
-    and the ONE-wire facts `a 0 = 1` — both supplied as hypotheses (standard externally-checked facts,
+    and the ONE-wire facts `a 0 = 1`, both supplied as hypotheses (standard externally-checked facts,
     no axiom). The determined-SET check (`native_decide`) needs NEITHER: `foldC` computes over the plain
     CommRing, so the reduction runs on BN254 without any primality proof."""
     import os
@@ -292,7 +292,7 @@ def codegen_foldc(r1cs_path, out_path, ns="GnarkCheck"):
     out.append(f"def I : List ℕ := {_natlist(inputs)}")
     out.append("")
     out.append("/-- Determinacy: any two satisfying assignments agreeing on the inputs agree on every")
-    out.append("    wire `foldC` determines — functional pins AND is-zero results — by `foldC_sound`.")
+    out.append("    wire `foldC` determines (functional pins AND is-zero results) by `foldC_sound`.")
     out.append("    `[Fact (Nat.Prime p)]` + `a 0 = 1` are the externally-checked facts (no axiom). -/")
     out.append("theorem determined [Fact (Nat.Prime p)] {a a' : ℕ → ZMod p}")
     out.append("    (h1 : a 0 = 1) (h1' : a' 0 = 1)")
@@ -302,7 +302,7 @@ def codegen_foldc(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("  R1CSChecker.foldC_sound h1 h1' cs I ha ha' hI")
     out.append("")
     out.append(f"/-- `foldC` determines all {len(det_uncond)} unconditional wires (functional + is-zero),")
-    out.append("    checked by reduction — no primality needed (foldC computes over the CommRing). -/")
+    out.append("    checked by reduction, no primality needed (foldC computes over the CommRing). -/")
     out.append(f"example : {_natlist(det_uncond)}.all (fun w => (R1CSChecker.foldC cs I).contains w) = true :=")
     out.append("  by native_decide")
     out.append("")
@@ -314,9 +314,9 @@ def codegen_foldc(r1cs_path, out_path, ns="GnarkCheck"):
 
 def codegen_foldg(r1cs_path, out_path, ns="GnarkCheck"):
     """foldG codegen: functional + is-zero + GUARDED, one scan. Same emission as --foldc (is-zero in
-    izPin? shape, functional pins O-first, everything else faithful — a guarded constraint `w·D = O`
+    izPin? shape, functional pins O-first, everything else faithful, a guarded constraint `w·D = O`
     already has w alone coeff-1 on L, which `gdPin?` recognises unchanged). The determinacy theorem is
-    `foldG_sound`, whose extra hypothesis is that every recorded divisor is nonzero — the named SAFE*
+    `foldG_sound`, whose extra hypothesis is that every recorded divisor is nonzero, the named SAFE*
     residual `(foldG cs I []).2`. The determined-SET check needs no primality (foldG computes over the
     CommRing). Bit-decomposition is NOT a foldG step (scattered group); it composes via BitDec.bits_agree."""
     import os
@@ -364,7 +364,7 @@ def codegen_foldg(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("")
     out.append("/-- Determinacy modulo the guard obligations: with every recorded divisor nonzero on `a`")
     out.append("    (the SAFE* residual `(foldG cs I []).2`), any two satisfying assignments agreeing on")
-    out.append("    the inputs agree on every foldG-determined wire — functional, is-zero, AND guarded. -/")
+    out.append("    the inputs agree on every foldG-determined wire, functional, is-zero, AND guarded. -/")
     out.append("theorem determined [Fact (Nat.Prime p)] {a a' : ℕ → ZMod p}")
     out.append("    (h1 : a 0 = 1) (h1' : a' 0 = 1)")
     out.append("    (ha : R1CSChecker.sat cs a) (ha' : R1CSChecker.sat cs a')")
@@ -374,7 +374,7 @@ def codegen_foldg(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("  R1CSChecker.foldG_sound h1 h1' cs I [] ha ha' hI hnz")
     out.append("")
     out.append(f"/-- foldG determines all {len(det)} wires (functional + is-zero + guarded), by reduction")
-    out.append("    — no primality needed (foldG computes over the CommRing). -/")
+    out.append(", no primality needed (foldG computes over the CommRing). -/")
     out.append(f"example : {_natlist(det)}.all (fun w => (R1CSChecker.foldG cs I []).1.contains w) = true :=")
     out.append("  by native_decide")
     out.append("")
@@ -386,7 +386,7 @@ def codegen_foldg(r1cs_path, out_path, ns="GnarkCheck"):
 
 def _foldb_run(sys_, P, cert):
     """Faithful Python mirror of Lean `foldB` (same iz→gd→fun recogniser order, same 2/1 advancement)
-    over the EMITTED constraint order — returns (determined_set, guard_obligation_wires) so the codegen's
+    over the EMITTED constraint order, returns (determined_set, guard_obligation_wires) so the codegen's
     native_decide target is exactly what foldB marks (a TRUE subset check, not the fixpoint)."""
     import gnark_leaves as gl
     cons = sys_["constraints"]
@@ -423,7 +423,7 @@ def _foldb_run(sys_, P, cert):
 
 
 def codegen_foldb(r1cs_path, out_path, ns="GnarkCheck"):
-    """SCALABLE codegen: emit `foldB` (Array Bool determined set) — same leaves as --foldg (functional +
+    """SCALABLE codegen: emit `foldB` (Array Bool determined set), same leaves as --foldg (functional +
     is-zero + guarded) but O(1) membership, so native_decide reaches real circuits. The determined set is
     an `Array Bool` of size n_wires seeded with the input wires; `foldB_sound` gives the determinacy
     (SAFE* obligation: every recorded divisor nonzero). Target set is foldB's actual single-pass output."""
@@ -495,7 +495,7 @@ def codegen_foldb(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("")
     out.append("/-- Determinacy modulo the guard obligations (SAFE*): with every recorded divisor nonzero")
     out.append("    on `a`, two satisfying assignments agreeing on the inputs agree on every foldB-marked")
-    out.append("    wire — functional, is-zero, guarded — over the O(1) Array Bool set. -/")
+    out.append("    wire (functional, is-zero, guarded) over the O(1) Array Bool set. -/")
     out.append("theorem determined [Fact (Nat.Prime p)] {a a' : ℕ → ZMod p}")
     out.append("    (h1 : a 0 = 1) (h1' : a' 0 = 1)")
     out.append("    (ha : R1CSChecker.sat cs a) (ha' : R1CSChecker.sat cs a')")
@@ -505,7 +505,7 @@ def codegen_foldb(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("  R1CSChecker.foldB_sound h1 h1' cs I [] ha ha' hI hnz")
     out.append("")
     out.append(f"/-- foldB marks all {len(target)} determined internal wires, by reduction over the Array")
-    out.append("    Bool set — no primality (foldB computes over the CommRing). -/")
+    out.append("    Bool set, no primality (foldB computes over the CommRing). -/")
     out.append(f"example : {_natlist(target)}.all (fun w => (R1CSChecker.foldB cs I []).1.getD w false) = true :=")
     out.append("  by native_decide")
     out.append("")
@@ -599,7 +599,7 @@ def codegen_full(r1cs_path, out_path, ns="GnarkCheck"):
            "   scan + bit-decomposition fixpoint, circuit & groups String-encoded). -/",
            f"namespace {ns}", "", f"abbrev p : ℕ := {P}",
            "-- BN254 primality is supplied as a hypothesis (no axiom; norm_num can't factor a 254-bit p).",
-           "-- native_decide never inspects it — Fact is an erased Prop — so the reductions still run.",
+           "-- native_decide never inspects it (Fact is an erased Prop), so the reductions still run.",
            "variable [Fact (Nat.Prime p)]", ""]
     out.append(f'def s : String := "{data_str}"')
     out.append("def toks : List Int := (s.splitOn \" \").filterMap (fun t => t.toInt?)")
@@ -612,7 +612,7 @@ def codegen_full(r1cs_path, out_path, ns="GnarkCheck"):
                f"(Array.mkArray {nw} false)")
     out.append("")
     out.append("/-- Full determinacy: with the guard obligations nonzero (SAFE*), two satisfying")
-    out.append("    assignments agreeing on the inputs agree on the whole fixpoint determined set —")
+    out.append("    assignments agreeing on the inputs agree on the whole fixpoint determined set, ")
     out.append("    functional, is-zero, guarded, AND bit-decomposition. -/")
     out.append("theorem determined {a a' : ℕ → ZMod p} (h1 : a 0 = 1) (h1' : a' 0 = 1)")
     out.append("    (ha : R1CSChecker.sat cs a) (ha' : R1CSChecker.sat cs a')")
@@ -624,7 +624,7 @@ def codegen_full(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("      have h : (groups.all (fun g => R1CSChecker.grpWF g cs)) = true := by native_decide")
     out.append(f"      exact (List.all_eq_true.1 h) g hg)) {fuel} I [] hI hnz")
     out.append("")
-    out.append(f"/-- The fixpoint determined set, computed ONCE (a CAF — so native_decide does not")
+    out.append(f"/-- The fixpoint determined set, computed ONCE (a CAF, so native_decide does not")
     out.append("    re-run the fold per wire). -/")
     out.append(f"def det : Array Bool := (R1CSChecker.fullFold cs groups {fuel} I []).1")
     out.append(f"/-- The fixpoint determines all {len(target)} internal wires (functional + is-zero +")
@@ -634,7 +634,7 @@ def codegen_full(r1cs_path, out_path, ns="GnarkCheck"):
     out.append("")
     # residual analysis (documentation): the free wires that remain are benign advice. Emitted as a
     # comment, not a native_decide (the exact free set is Lean's `det`, computed above); the benign
-    # guarantee is fullFold_sound itself — the determined outputs agree across ANY two satisfying
+    # guarantee is fullFold_sound itself, the determined outputs agree across ANY two satisfying
     # assignments agreeing on the inputs, so they are independent of every non-determined wire.
     internal = list(range(nfix, nw))
     free = sorted(w for w in internal if w not in Sdet)
@@ -646,8 +646,8 @@ def codegen_full(r1cs_path, out_path, ns="GnarkCheck"):
             occ[w] += 1
     single = [w for w in free if occ[w] <= 1]
     multi = [w for w in free if occ[w] > 1]
-    out.append(f"/- Free residual (benign): {len(single)} single-use wires — is-zero inverse hints that")
-    out.append(f"   appear in ≤1 constraint, so they feed nothing — plus {len(multi)} wires determined by a")
+    out.append(f"/- Free residual (benign): {len(single)} single-use wires, is-zero inverse hints that")
+    out.append(f"   appear in ≤1 constraint, so they feed nothing, plus {len(multi)} wires determined by a")
     out.append(f"   gadget the recognisers don't yet reach ({multi}). No meaningful signal is free:")
     out.append("   `determined` (fullFold_sound) proves the outputs are independent of every free wire. -/")
     out.append("")
@@ -667,7 +667,7 @@ def _sec_tokens(secs, signed=False):
 
 
 def _fullfold_run(sys_, P, cert, bool_ci, recomp, groups, iz_lit, pin_of):
-    """Python mirror of Lean fullFold (foldB scan + bitMark, to fixpoint) — returns (determined, fuel)."""
+    """Python mirror of Lean fullFold (foldB scan + bitMark, to fixpoint), returns (determined, fuel)."""
     cons = sys_["constraints"]; nfix = sys_["n_public"] + sys_["n_secret"]
     TMS = [(_tm(c["L"], P), _tm(c["R"], P), _tm(c["O"], P)) for c in cons]
     import gnark_leaves as gl

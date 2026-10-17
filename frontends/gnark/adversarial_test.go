@@ -20,7 +20,7 @@ import (
 //
 // WHY. The Jacobian finder measures freedom LOCALLY, at whichever witness it is handed. In
 // scalarMulFakeGLV the result point is unconstrained only on the degenerate branch, so at an
-// honest witness the local rank is (plausibly) full and the output looks determined — which
+// honest witness the local rank is (plausibly) full and the output looks determined, which
 // is exactly why a whole-circuit run at honest witnesses saw nothing. Feeding the SAME engine
 // a witness on the degenerate branch tests whether the analysis was ever the limitation, or
 // only the witness supply was.
@@ -82,6 +82,6 @@ func TestAdversarialWitness(t *testing.T) {
 		filepath.Join(outDir, "scalarmul.degenerate.wit.json")); err != nil {
 		t.Fatalf("write degenerate witness: %v", err)
 	}
-	t.Logf("DEGENERATE: solved with s1=s2=k=bit=0, %d wires — the vacuous branch is reachable",
+	t.Logf("DEGENERATE: solved with s1=s2=k=bit=0, %d wires; the vacuous branch is reachable",
 		len(solD.(*cs.R1CSSolution).W))
 }

@@ -1,7 +1,7 @@
 // Prove-level check for the patched gadget: the v0.16.2 ScalarMul binds its hints
 // through a commitment, so plain R1CS witness export stops at the commitment
 // placeholder. The deployed semantics live at the proving layer, where the backend
-// computes the commitment — so the vulnerable/patched contrast is measured there:
+// computes the commitment, so the vulnerable/patched contrast is measured there:
 // honest proving must succeed and verify; the degenerate hint overrides must fail.
 //
 // Run with: go run . prove

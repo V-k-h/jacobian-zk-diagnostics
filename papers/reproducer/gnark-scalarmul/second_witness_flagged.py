@@ -8,7 +8,7 @@ single-wire perturbation is rejected: the freedom is coupled (two free
 parameters propagating through three live rows). This script performs the
 paper's second-witness construction on the slice:
 
-  1. collect the LIVE rows — constraints still involving a flagged wire after
+  1. collect the LIVE rows, constraints still involving a flagged wire after
      every other wire is substituted with its witness value (all other rows
      touching the flagged wires are vacuous 0*(...)=0 on this branch);
   2. re-seed one flagged wire (+1), keep the other free choices, and propagate
@@ -126,11 +126,11 @@ def main():
             known[unassigned[0]] = wit[unassigned[0]]
         cand = [known[i] for i in range(len(wit))]
         if violations(cons, cand, p):
-            print(f"seed wire {seed}: propagation did not close — trying next seed")
+            print(f"seed wire {seed}: propagation did not close, trying next seed")
             continue
         diff = [i for i in range(len(wit)) if cand[i] != wit[i]]
         assert all(cand[i] == wit[i] for i in range(nfix))
-        print(f"seed wire {seed}: SECOND WITNESS CONFIRMED — all {len(cons)} "
+        print(f"seed wire {seed}: SECOND WITNESS CONFIRMED, all {len(cons)} "
               f"constraints satisfied, inputs identical, wires changed: {diff}")
         return 0
     print("no seed produced a second witness (freedom may need joint re-solve)")

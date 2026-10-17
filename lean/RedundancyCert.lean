@@ -1,13 +1,13 @@
 /-
-RedundancyCert.lean — the differential step of the paper's local-redundancy
+RedundancyCert.lean: the differential step of the paper's local-redundancy
 certificate (ePrint 2026/1852, Lemma "Local-redundancy certificate").
 
 The paper discards a vacuous constraint row `g` from the augmented Jacobian
 when an explicit identity  w * g = ∑ i, q i * f i  holds with the retained
 constraints `f i` and a multiplier `w` that does not vanish at the witness.
-The proof's differential step — differentiate the identity, evaluate at a
+The proof's differential step, differentiate the identity, evaluate at a
 satisfying point, and conclude that the dropped row's gradient lies in the
-span of the retained rows' gradients — is formalised here, kernel-checked:
+span of the retained rows' gradients, is formalised here, kernel-checked:
 
   `redundant_row_differential` :
       w * g = ∑ i in s, q i * f i   →   eval a g = 0   →  (∀ i ∈ s, eval a (f i) = 0)
@@ -16,7 +16,7 @@ span of the retained rows' gradients — is formalised here, kernel-checked:
 
 With `eval a w ≠ 0` (the certificate's side condition) this exhibits each
 coordinate of the dropped row as the fixed linear combination
-(eval a (q i) / eval a w) of the retained rows — the exact sentence used in
+(eval a (q i) / eval a w) of the retained rows, the exact sentence used in
 the paper's proof. Krull-height smoothness and Lang–Weil counting are not
 formalised; this file covers only the identity-to-row-span step, in the same
 complementary spirit as R1CSChecker.lean.
@@ -53,7 +53,7 @@ theorem redundant_row_differential
 /-- The certificate's conclusion in row form: when the multiplier is a unit at
 the witness, every coordinate of the dropped row equals a fixed linear
 combination of the retained rows' coordinates, with coefficients independent
-of the coordinate `j` — i.e. the dropped row lies in their span. -/
+of the coordinate `j`, i.e. the dropped row lies in their span. -/
 theorem redundant_row_in_span
     {F : Type*} [Field F]
     (w g : MvPolynomial σ F) (s : Finset ι) (q f : ι → MvPolynomial σ F)

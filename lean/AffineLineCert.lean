@@ -1,12 +1,12 @@
 /-
-AffineLineCert.lean — the algebraic core of the affine-line certificate
+AffineLineCert.lean: the algebraic core of the affine-line certificate
 (ePrint 2026/1852, Proposition "Affine-line certificate").
 
 An R1CS row is f(x) = (L x + lc)(R x + rc) − (O x + oc) with L, R, O linear.
 The certificate rests on the exact quadratic expansion along a line
 a + t•v, whose t² coefficient is (L v)(R v): if the row vanishes at a, the
 directional derivative vanishes, and (L v)(R v) = 0, then the row vanishes
-at every point of the line — and conversely, under the first two
+at every point of the line, and conversely, under the first two
 hypotheses, vanishing at the single point a + v already forces
 (L v)(R v) = 0. Both directions are kernel-checked here over an arbitrary
 commutative ring, so the result is characteristic-free, exactly as the
@@ -46,7 +46,7 @@ theorem r1csRow_vanishes_on_line (L Rf O : V →ₗ[R] R) (lc rc oc : R) (a v : 
 
 /-- Converse: under the satisfaction and tangency hypotheses, vanishing at the
 single point `a + v` already forces the quadratic directional coefficient to
-vanish — so the three-coefficient check is equivalent to satisfaction along
+vanish, so the three-coefficient check is equivalent to satisfaction along
 the entire line. -/
 theorem quadratic_coefficient_of_point (L Rf O : V →ₗ[R] R) (lc rc oc : R) (a v : V)
     (h0 : r1csRow L Rf O lc rc oc a = 0)

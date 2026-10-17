@@ -5,21 +5,21 @@ set_option linter.unusedSectionVars false
 /-!
 # A verified, O(n) R1CS determinacy checker
 
-`R1CSCert` transcribes a certificate into an *unrolled* proof — one tactic step per wire — which does
+`R1CSCert` transcribes a certificate into an *unrolled* proof (one tactic step per wire) which does
 not scale. This file is the scalable design: a single generic soundness theorem `fold_sound`, proved
 once, whose per-circuit use is **only data plus one decidable evaluation**. The per-step check is
 purely STRUCTURAL (is the pinned wire lone with coefficient 1 on the output side, are the other wires
-already determined) — no field arithmetic — so the fold that computes the determined set reduces cheaply.
+already determined) with no field arithmetic, so the fold that computes the determined set reduces cheaply.
 
 A circuit is `cs : List (Con F)`. `stepPin` walks the constraints in order, extending the determined-wire
 list `S` whenever the next constraint functionally pins a new wire from wires already in `S` (the
 straight-line / dependency order that gnark emits). `fold_sound` proves: any two satisfying assignments
-agreeing on the inputs `I` agree on `cs.foldl stepPin I` — the whole determined set — with the field
+agreeing on the inputs `I` agree on `cs.foldl stepPin I` (the whole determined set) with the field
 reasoning discharged once by `funpin_one_pt`.
 
 Leaf coverage: FUNCTIONAL pins go through `fold_sound` (single-pass, one constraint at a time). IS-ZERO
-gadgets — which gnark emits as an ADJACENT constraint pair `cB : (-x)·m = -1+b`, `cA : x·b = 0`
-(measured) — are handled by `foldC`, a scan that consumes either one constraint (functional) or two (an
+gadgets, which gnark emits as an ADJACENT constraint pair `cB : (-x)·m = -1+b`, `cA : x·b = 0`
+(measured), are handled by `foldC`, a scan that consumes either one constraint (functional) or two (an
 is-zero pair), with soundness `foldC_sound`; so functional AND is-zero determinacy are both integrated
 into one linear pass. The GUARDED leaf (`guarded_pin`, § Field) carries a `divisor≠0` obligation and is
 proved but not yet folded in (its obligation is discharged separately by `Inertness.lean`). So `foldC`
@@ -88,7 +88,7 @@ theorem wiresIn_mem {l : List (F × ℕ)} {S : List ℕ} (h : wiresIn l S = true
   simpa [List.contains_iff_mem] using this
 
 /-- One pass step: if constraint `c`'s output side is `(1,w) :: Orest` with `w` new and `L,R,Orest`
-already determined, add `w`; otherwise leave `S` unchanged. Purely structural — decidable. -/
+already determined, add `w`; otherwise leave `S` unchanged. Purely structural, decidable. -/
 def stepPin (S : List ℕ) (c : Con F) : List ℕ :=
   match c.O with
   | (t :: Orest) =>
@@ -117,7 +117,7 @@ theorem stepPin_agree (c : Con F) (S : List ℕ) {a a' : ℕ → F}
     · rw [if_neg hcond]; exact hS
 
 /-- **Fold soundness (the whole checker).** Two satisfying assignments agreeing on the inputs `I`
-agree on `cs.foldl stepPin I` — the entire determined set the one-pass checker computes. Proved once;
+agree on `cs.foldl stepPin I`, the entire determined set the one-pass checker computes. Proved once;
 a per-circuit determinacy theorem is then just `fold_sound` applied to concrete `cs`, `I`, with the
 determined set obtained by reducing `cs.foldl stepPin I` (no per-step proof). -/
 theorem fold_sound (cs : List (Con F)) : ∀ (I : List ℕ) {a a' : ℕ → F},
@@ -138,7 +138,7 @@ end Checker
 /-!
 ## Field leaves (is-zero, guarded)
 
-The is-zero and guarded pins need field cancellation / no-zero-divisors, hence a field base — for a
+The is-zero and guarded pins need field cancellation / no-zero-divisors, hence a field base, for a
 concrete circuit, `ZMod p` with `[Fact (Nat.Prime p)]` (a standard, externally-verified fact supplied
 as a hypothesis; no axiom). These are the list-model analogues of `GnarkR1CS.r1cs_iszero` /
 `r1cs_guarded`, in point form for a certificate replay.
@@ -147,7 +147,7 @@ section Field
 variable {F : Type*} [Field F]
 
 /-- **is-zero leaf.** Given `x` determined (equal across the two runs) and the gadget constraints
-`x·b = 0`, `x·m + b = 1` on both assignments, the result `b` is determined — unconditionally. The
+`x·b = 0`, `x·m + b = 1` on both assignments, the result `b` is determined, unconditionally. The
 inverse hint `m` may be free when `x = 0`, but is benign (it feeds only `x·m`, which is `0` there). -/
 theorem iszero_pin {x b m : ℕ} {a a' : ℕ → F}
     (hx : a x = a' x)
@@ -179,7 +179,7 @@ end Field
 /-!
 ## The integrated pass: functional pins AND is-zero gadgets, in one scan
 
-gnark emits each is-zero gadget as an ADJACENT constraint pair — `cB : (-x)·m = -1 + b` immediately
+gnark emits each is-zero gadget as an ADJACENT constraint pair, `cB : (-x)·m = -1 + b` immediately
 followed by `cA : x·b = 0` (measured). So a single scan that consumes either one constraint (functional)
 or two (an is-zero pair) covers both, keeping `sat` flat and the induction linear. `foldC` is that scan;
 `foldC_sound` its soundness. The base field is needed for the is-zero cancellation.
@@ -230,7 +230,7 @@ section IntegratedSound
 variable {F : Type*} [Field F] [DecidableEq F]
 
 /-- **Integrated fold soundness.** With the ONE wire pinned (`a 0 = 1`), two satisfying assignments
-agreeing on the inputs agree on every wire `foldC` determines — functional pins and is-zero results.
+agreeing on the inputs agree on every wire `foldC` determines, functional pins and is-zero results.
 Needs the field (is-zero cancellation); for a concrete circuit, `ZMod p` with `[Fact (Nat.Prime p)]`. -/
 theorem foldC_sound {a a' : ℕ → F} (h1 : a 0 = 1) (h1' : a' 0 = 1) :
     ∀ (cs : List (Con F)) (I : List ℕ),
@@ -282,7 +282,7 @@ end IntegratedSound
 
 gnark's quotient gadgets pin a wire `w` that sits ALONE (coeff 1) on one multiplicative side, with the
 other side `D` (the divisor) and the output `O` already determined: `w · (D·a) = (O·a)`. Then `w` is
-forced PROVIDED `D·a ≠ 0`. Unlike functional/is-zero, this carries a side-condition — so the fold
+forced PROVIDED `D·a ≠ 0`. Unlike functional/is-zero, this carries a side-condition, so the fold
 `foldG` returns not just the determined set but the LIST OF DIVISOR FORMS it leaned on. Those are the
 `SAFE*` obligations, named precisely; `foldG_sound` gives determinacy **conditional** on every one being
 nonzero (the hypothesis the inertness argument, `Inertness.lean`, discharges for the padding-zero cases).
@@ -291,7 +291,7 @@ section GuardedDef
 variable [DecidableEq F]
 
 /-- Recognise a guarded pin: `w` alone with coeff 1 on `L`, divisor `R` and output `O` determined,
-`w` new. Returns `(w, R)` — the pinned wire and the divisor form whose nonzero-ness is the obligation.
+`w` new. Returns `(w, R)`; the pinned wire and the divisor form whose nonzero-ness is the obligation.
 (L-side only: the dominant gnark shape; R-side quotients fail closed, leaving the wire undetermined.) -/
 def gdPin? (c : R1CSChecker.Con F) (S : List ℕ) : Option (ℕ × List (F × ℕ)) :=
   match c.L with
@@ -334,7 +334,7 @@ def foldG : List (R1CSChecker.Con F) → List ℕ → List (List (F × ℕ)) →
           | some (w, D) => foldG (cA :: rest) (w :: S) (D :: ob)
           | none => foldG (cA :: rest) (stepPin S cB) ob
 
-/-- Obligations are only ACCUMULATED — every obligation present at a step survives to the end. So a
+/-- Obligations are only ACCUMULATED, every obligation present at a step survives to the end. So a
 divisor recorded when a guarded pin fires is in the final obligation list (where `foldG_sound`'s
 nonzero hypothesis ranges). -/
 theorem foldG_obl_mono : ∀ (cs : List (R1CSChecker.Con F)) (S : List ℕ)
@@ -372,7 +372,7 @@ theorem gdPin_agree {c : R1CSChecker.Con F} {S : List ℕ} {w : ℕ} {D : List (
 
 /-- **Guarded fold soundness (the SAFE\* form).** With the ONE wire pinned and EVERY recorded divisor
 nonzero on `a`, two satisfying assignments agreeing on the inputs agree on every wire `foldG`
-determines — functional, is-zero, AND guarded pins. The nonzero hypotheses are the named `SAFE*`
+determines, functional, is-zero, AND guarded pins. The nonzero hypotheses are the named `SAFE*`
 residual (discharged by `Inertness.lean`). -/
 theorem foldG_sound {a a' : ℕ → F} (h1 : a 0 = 1) (h1' : a' 0 = 1) :
     ∀ (cs : List (R1CSChecker.Con F)) (S : List ℕ) (ob : List (List (F × ℕ))),
@@ -493,7 +493,7 @@ theorem natVal_lt : ∀ (u : List ℕ), (∀ b ∈ u, b = 0 ∨ b = 1) → natVa
 
 variable {p : ℕ}
 
-/-- `ZMod p` recomposition value `Σ 2ⁱ·a(bits[i])` (LSB first) — the value the recomposition
+/-- `ZMod p` recomposition value `Σ 2ⁱ·a(bits[i])` (LSB first), the value the recomposition
 constraint `(ONE)·(Σ 2ⁱ·bᵢ) = value` equates to `value`. -/
 def zVal (bits : List ℕ) (a : ℕ → ZMod p) : ZMod p :=
   match bits with
@@ -520,7 +520,7 @@ theorem bool_of_bc [Fact (Nat.Prime p)] {b : ℕ} {a : ℕ → ZMod p} (h : a b 
   · exact Or.inr (sub_eq_zero.1 h1).symm
 
 /-- **Bit-decomposition determinacy.** Booleanity on both runs, a shared recomposition value, and
-no wraparound (`2ⁿ ≤ p`) force every bit to agree — the canonicity theorem in the list model. -/
+no wraparound (`2ⁿ ≤ p`) force every bit to agree, the canonicity theorem in the list model. -/
 theorem bits_agree [Fact (Nat.Prime p)] {bits : List ℕ} {a a' : ℕ → ZMod p}
     (hbool : ∀ b ∈ bits, a b = 0 ∨ a b = 1) (hbool' : ∀ b ∈ bits, a' b = 0 ∨ a' b = 1)
     (hval : zVal bits a = zVal bits a') (hcanon : 2 ^ bits.length ≤ p) :
@@ -552,10 +552,10 @@ end BitDec
 ## The scalable fold: an `Array Bool` determined set (linear, `native_decide`-friendly)
 
 `foldC`/`foldG` carry the determined set as a `List ℕ`, so `wiresIn` does an O(|S|) `List.contains` per
-term and the whole scan is O(n²) — `native_decide` stalls past a few hundred constraints. `foldB` is the
+term and the whole scan is O(n²), `native_decide` stalls past a few hundred constraints. `foldB` is the
 same scan with the determined set as an **`Array Bool`** indexed by wire id: membership and marking are
 O(1), so the scan is linear and `native_decide` computes the determined set of a 6k-constraint circuit in
-well under a second. The soundness is identical in shape to `foldG_sound` — the field cores `iszero_pin`
+well under a second. The soundness is identical in shape to `foldG_sound`, the field cores `iszero_pin`
 and `guarded_pin` are reused verbatim (they speak of `a x`, not of the set representation); only the
 membership abstraction changes (`agreeA` over `Array.getD`, closed under `agreeA_set`).
 -/
@@ -597,7 +597,7 @@ theorem agreeA_set {S : Array Bool} {w : ℕ} {a a' : ℕ → F}
   · subst hvw; exact hw
   · exact hS v (by unfold memB at hv ⊢; rwa [getD_setIfInBounds_ne S hvw] at hv)
 
-/-- Functional pin over the `Array Bool` set — the pinned wire is the coeff-1 head of `O`, everything
+/-- Functional pin over the `Array Bool` set; the pinned wire is the coeff-1 head of `O`, everything
 else marked determined, the wire new. -/
 def funPinB? (c : R1CSChecker.Con F) (S : Array Bool) : Option ℕ :=
   match c.O with
@@ -660,7 +660,7 @@ theorem gdPinB?_spec {c : R1CSChecker.Con F} {S : Array Bool} {w : ℕ} {D : Lis
       · rw [if_neg hcond] at h; exact absurd h (by simp)
     · rw [hL] at h; exact absurd h (by simp)
 
-/-- The scalable scan: is-zero pair, else guarded pin (recording its divisor), else functional/no-op —
+/-- The scalable scan: is-zero pair, else guarded pin (recording its divisor), else functional/no-op, 
 determined set as an `Array Bool`. Returns `(marks, obligations)`. -/
 def foldB : List (R1CSChecker.Con F) → Array Bool → List (List (F × ℕ)) →
     Array Bool × List (List (F × ℕ))
@@ -732,9 +732,9 @@ theorem gdPinB_agree {c : R1CSChecker.Con F} {S : Array Bool} {w : ℕ} {D : Lis
   refine agreeA_set ?_ hS
   exact mul_right_cancel₀ hnz (by rw [ha, hOeq, ← ha', hDeq])
 
-/-- **Scalable fold soundness.** Identical guarantee to `foldG_sound` — with the ONE wire pinned and
+/-- **Scalable fold soundness.** Identical guarantee to `foldG_sound`, with the ONE wire pinned and
 every recorded divisor nonzero, two satisfying assignments agreeing on the inputs agree on every wire
-`foldB` marks (functional, is-zero, guarded) — but over the O(1)-membership `Array Bool` set, so
+`foldB` marks (functional, is-zero, guarded), but over the O(1)-membership `Array Bool` set, so
 `native_decide` scales to real circuits. -/
 theorem foldB_sound {a a' : ℕ → F} (h1 : a 0 = 1) (h1' : a' 0 = 1) :
     ∀ (cs : List (R1CSChecker.Con F)) (S : Array Bool) (ob : List (List (F × ℕ))),
@@ -806,7 +806,7 @@ end FastSound
 ## Bit-decomposition over the constraint form (composed into the fold's determined set)
 
 `BitDec.bits_agree` is the canonicity core over the abstract recomposition value `zVal`. To USE it on a
-real circuit — whose recomposition constraint is `(ONE)·(Σ 2ⁱ·bᵢ) = val` — we bridge `zVal` to the
+real circuit (whose recomposition constraint is `(ONE)·(Σ 2ⁱ·bᵢ) = val`) we bridge `zVal` to the
 `dotp` of the power-of-two coefficient list (`dotp_powList`), then `bitLeaf_agree` discharges a bit group
 from: booleanity on both runs, the recomposition equation, and `val` marked determined in the `Array Bool`
 set. This is the leaf the fixpoint marker applies per group (bit decomposition is a scattered group, so it
@@ -848,7 +848,7 @@ end BitDec
 /-!
 ## The full determined set: scan + bit-decomposition to a fixpoint
 
-Bit decomposition and functional/guarded pins are mutually recursive — a pinned value unlocks its bits
+Bit decomposition and functional/guarded pins are mutually recursive, a pinned value unlocks its bits
 (`bitLeaf_agree`), and pinned bits unlock downstream functional pins (`foldB`). `fullFold` iterates the two
 to a fixpoint (`fuel` rounds), and `fullFold_sound` composes `foldB_sound` with the bit-group marker
 `bitMark_agree`. The per-group facts `grpOk` (booleanity + recomposition + no wraparound) are exactly what
@@ -873,7 +873,7 @@ theorem markBits_agree [Fact (Nat.Prime p)] {bits : List ℕ} {S : Array Bool} {
 /-- A bit group: its bit wires (LSB first) and the recomposition value form. -/
 abbrev BitGrp (p : ℕ) := List ℕ × List (ZMod p × ℕ)
 
-/-- The per-group facts a bit group needs — booleanity on both runs, the recomposition equation on
+/-- The per-group facts a bit group needs, booleanity on both runs, the recomposition equation on
 both, and no wraparound. Supplied from `sat cs` + `a 0 = 1` by the codegen. -/
 def grpOk (g : BitGrp p) (a a' : ℕ → ZMod p) : Prop :=
   (∀ b ∈ g.1, a b * (1 - a b) = 0) ∧ (∀ b ∈ g.1, a' b * (1 - a' b) = 0) ∧
@@ -911,7 +911,7 @@ theorem fullFold_obl_mono (cs) (groups : List (BitGrp p)) :
   | succ k ih => intro S ob x hx; simp only [fullFold]; exact ih _ _ x (foldB_obl_mono cs S ob x hx)
 
 /-- **Full determinacy.** With the ONE wire pinned, every recorded divisor nonzero, and every bit group
-valid, two satisfying assignments agreeing on the inputs agree on the entire fixpoint determined set —
+valid, two satisfying assignments agreeing on the inputs agree on the entire fixpoint determined set, 
 functional, is-zero, guarded, AND bit decomposition. -/
 theorem fullFold_sound [Fact (Nat.Prime p)] {a a' : ℕ → ZMod p} (h1 : a 0 = 1) (h1' : a' 0 = 1)
     (cs : List (R1CSChecker.Con (ZMod p))) (groups : List (BitGrp p))
@@ -942,7 +942,7 @@ def grpWF (g : BitGrp p) (cs : List (R1CSChecker.Con (ZMod p))) : Bool :=
   decide (2 ^ g.1.length ≤ p)
 
 /-- **The bit-group discharge.** A well-formed group's facts (`grpOk`) follow from `sat cs` and
-`a 0 = 1` — its booleanity and recomposition constraints hold because they are in `cs`. So the codegen
+`a 0 = 1`; its booleanity and recomposition constraints hold because they are in `cs`. So the codegen
 proves `grpWF` by `native_decide` (structural) and gets `grpOk` for free. -/
 theorem grpOk_of_sat [Fact (Nat.Prime p)] {a a' : ℕ → ZMod p} (h1 : a 0 = 1) (h1' : a' 0 = 1)
     {cs : List (R1CSChecker.Con (ZMod p))} (ha : sat cs a) (ha' : sat cs a')
@@ -967,7 +967,7 @@ end BitMark
 /-!
 ## Parsing large circuits from a `String` (the frontend that actually scales)
 
-Embedding a real circuit as a `List (Con (ZMod p))` LITERAL does not scale — Lean elaborates a
+Embedding a real circuit as a `List (Con (ZMod p))` LITERAL does not scale, Lean elaborates a
 multi-thousand-element list literal superlinearly (and `ZMod p` numerals force per-element `whnf`),
 timing out well before 6k constraints. A `String` literal, by contrast, is a primitive elaborated in
 O(n). So the codegen emits the circuit as a flat integer string and `parseCons` decodes it into `cs`

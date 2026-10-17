@@ -21,7 +21,7 @@ Pipeline (from the repository root):
 
 | Witness                     | Under-determined advice wires |
 |-----------------------------|-------------------------------|
-| honest (hints solve)        | none — all 4293 determined     |
+| honest (hints solve)        | none, all 4293 determined     |
 | degenerate (hints zeroed)   | 14: [517,518,520,521,523,525,526,527,529,530,531,537,538,542] |
 
 Same bug, same tool, PLONKish arithmetization: honest 0 -> degenerate nonzero, exactly

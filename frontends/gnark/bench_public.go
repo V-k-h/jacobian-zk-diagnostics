@@ -88,7 +88,7 @@ func (c *MiMCTree) Define(api frontend.API) error {
 	return nil
 }
 
-// MerklePath verifies a Merkle inclusion proof (gnark std accumulator) —
+// MerklePath verifies a Merkle inclusion proof (gnark std accumulator), 
 // a path topology with index-bit selectors, i.e. guarded structure.
 type MerklePath struct {
 	Leaf frontend.Variable  `gnark:",public"`
@@ -104,7 +104,7 @@ func (c *MerklePath) Define(api frontend.API) error {
 	return nil
 }
 
-// EdDSAVerify verifies one EdDSA signature (gnark std) — mixed topology:
+// EdDSAVerify verifies one EdDSA signature (gnark std), mixed topology:
 // twisted-Edwards double-and-add, bit decompositions, and MiMC.
 type EdDSAVerify struct {
 	PublicKey eddsa.PublicKey   `gnark:",public"`
@@ -124,7 +124,7 @@ func (c *EdDSAVerify) Define(api frontend.API) error {
 	return eddsa.Verify(curve, c.Signature, c.Message, c.PublicKey, &h)
 }
 
-// SHA256Block hashes a fixed 64-byte message (gnark std sha2) — a bitwise
+// SHA256Block hashes a fixed 64-byte message (gnark std sha2), a bitwise
 // u8/u32 topology unlike any of the field-native families above.
 type SHA256Block struct {
 	In [64]uints.U8 `gnark:",public"`

@@ -1,6 +1,6 @@
 # Public scale benchmark (MiMCChain family)
 
-Circuit: `frontends/gnark/bench_public.go` `MiMCChain` — N chained MiMC permutations of a
+Circuit: `frontends/gnark/bench_public.go` `MiMCChain`, N chained MiMC permutations of a
 single public input X on BN254 (gnark v0.14.0, 330 constraints per permutation), final digest
 deliberately unpinned so the solver fills every internal round wire from X alone. Ground truth:
 **all internal wires DETERMINED**. Uses only gnark's standard library, so the circuit,
@@ -39,7 +39,7 @@ At 990 constraints the dense baseline is already ~2,400× slower than sparse (16
 grows cubically; it completes at none of the larger sizes.
 
 Also measured in the same harness: the gnark-scalarmul case-study R1CS (2,396 constraints,
-honest witness) — rank 0.014 s, total 0.024 s, 22 MiB, all determined.
+honest witness), rank 0.014 s, total 0.024 s, 22 MiB, all determined.
 
 Machine: Apple M4 Pro (14 cores, 48 GiB), macOS 15.1, CPython 3.14.7, Go 1.25.12, gnark v0.14.0.
 
@@ -56,10 +56,10 @@ not a general guarantee (the paper says exactly this).
 | Merkle path depth 20 (MiMC)   | merklepath GNARK_MERKLE_K=20 | 13,592   | 269,459 | 0.699    | 0.964     | 307       | all determined |
 | MiMC tree, 64 leaves          | mimctree GNARK_TREE_K=6   | 41,580      | 239,213 | 0.549    | 0.864     | 311       | all determined |
 
-Note the depth-20 Merkle path: more Jacobian nnz and slower rank than the 3x-larger MiMC tree —
+Note the depth-20 Merkle path: more Jacobian nnz and slower rank than the 3x-larger MiMC tree, 
 elimination cost tracks structure/fill-in, not constraint count.
 
 SHA-256 (gnark std sha2, 183,144 constraints) compiles but its witness cannot be solved outside a
 proving backend: gnark's uints range tables use the commitment API ("placeholder function: to be
 replaced by commitment computation"). Commitment-using circuits need witness export via a full
-prover run — out of scope for this harness today.
+prover run, out of scope for this harness today.

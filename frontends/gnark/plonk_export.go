@@ -1,4 +1,4 @@
-// plonk_export.go — compile a circuit to gnark's PLONKish arithmetization
+// plonk_export.go: compile a circuit to gnark's PLONKish arithmetization
 // (SparseR1CS: gates qL*xa + qR*xb + qO*xc + qM*(xa*xb) + qC == 0, plus wiring by
 // shared wire id) and dump it in the SAME (L,R,O) JSON the R1CS path uses, so the
 // unchanged Jacobian tool consumes it. A PLONK gate maps exactly onto the tool's

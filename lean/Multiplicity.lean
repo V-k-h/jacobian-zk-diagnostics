@@ -1,13 +1,13 @@
 import Mathlib
 
 /-!
-# Multiplicity bounds from degree — the keystone for constraint systems beyond R1CS
+# Multiplicity bounds from degree, the keystone for constraint systems beyond R1CS
 
 The existing leaf rules discharge a wire when it appears **linearly** in a constraint:
 `Composition.detBy_linpin` and `GnarkR1CS.r1cs_funpin` both need the wire to be
 isolable as `c·w + rest` with `c ≠ 0`. That is the whole of what R1CS can present,
 because `(L·a)(R·a) = O·a` is degree 2 overall and any single wire appears at degree
-≤ 2 — and at degree 2 only as a square on one side, which the detector declines.
+≤ 2, and at degree 2 only as a square on one side, which the detector declines.
 
 Plonkish relations are not so bounded. Poseidon2's S-box is `s⁵`, the elliptic
 identities reach degree 6, and the delta-range constraint is a genuine quartic
@@ -20,12 +20,12 @@ exactly what the engine's C1 gate needs, and it is the fact this file supplies.
 `compose/polysys.py::step_degree_poly` computes `deg_w(g)` together with the leading
 coefficient, and `gnark_audit`'s C1 gate consumes the result three ways:
 
-* bound `= 1` — the wire is determined (already covered by `detBy_linpin`);
-* bound `> 1` — the wire is **provably multi-valued**, so C1 *fails*. A flattened
+* bound `= 1`; the wire is determined (already covered by `detBy_linpin`);
+* bound `> 1`; the wire is **provably multi-valued**, so C1 *fails*. A flattened
   quartic defeated an earlier version of that gate precisely here: it is first-order
   determined at a simple root yet has four satisfying values, and the gate reported
   SAFE. Refuting uniqueness needs a real upper bound, not the absence of a pin;
-* bound `= None` — declined, which now also fails rather than being filtered out.
+* bound `= None`, declined, which now also fails rather than being filtered out.
 
 So the engine is already reasoning "at most `d` values". Until now that step was a
 Python argument. `card_values_le_degree` below makes it a theorem, which is what lets
@@ -36,7 +36,7 @@ the Plonkish path rest on the same kernel as the R1CS path.
 A lookup `∃ j, w = table j` is disjunctive and cannot be written as a vanishing
 polynomial, so it looks like it falls outside this framework. It does not: a lookup
 against a table of `n` entries bounds `w` to `n` values, which is the same shape of
-fact — see `card_values_le_of_mem_image`. Lookups therefore *constrain without
+fact, see `card_values_le_of_mem_image`. Lookups therefore *constrain without
 pinning*, and they compose with the degree bounds through the same C1 gate rather
 than needing separate machinery.
 
@@ -45,7 +45,7 @@ than needing separate machinery.
 Everything is relative to a reference assignment `a₀` and the set `S` of already-pinned
 variables, matching `Slocal` in `GnarkR1CS`: the coefficients may depend on the
 assignment, but only through `S`. The conclusion bounds the number of distinct values
-`w` takes across satisfying assignments that agree with `a₀` on `S` — which is the
+`w` takes across satisfying assignments that agree with `a₀` on `S`, which is the
 two-run/multi-run quantity the whole development is phrased in.
 -/
 
@@ -145,7 +145,7 @@ theorem card_values_le_degree {S : Set Var} {w : Var} {d : ℕ}
 
 /-- **Lookup corollary.** A wire constrained to lie in the image of a finite index type
 takes at most `Fintype.card ι` values. Nothing about the table is assumed beyond
-finiteness — in particular the entries need not be distinct, so this is an upper bound
+finiteness, in particular the entries need not be distinct, so this is an upper bound
 on a lookup's multiplicity exactly as `card_values_le_degree` is on a polynomial gate.
 Lookups therefore feed the same C1 gate rather than requiring separate machinery. -/
 theorem card_values_le_of_mem_image {S : Set Var} {w : Var} {ι : Type*} [Fintype ι]

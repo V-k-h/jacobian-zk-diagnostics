@@ -15,7 +15,7 @@ question = are the 2396 advice/internal wires determined by S?
 
 | Witness                                   | Under-determined advice wires |
 |-------------------------------------------|-------------------------------|
-| honest (halfGCD solves normally)          | none — all 2396 determined    |
+| honest (halfGCD solves normally)          | none, all 2396 determined    |
 | halfGCD hint zeroed (s1=s2=k=bits=0)      | 5: [261, 262, 264, 265, 266]  |
 | all hints zeroed                          | 4: [261, 262, 265, 266]       |
 
@@ -29,7 +29,7 @@ signature, here reproduced entirely from public gnark source.
 
 Full sweep = 20 hint-degeneracy variants (per hint: zeroed, one, edwards-identity, first-zero,
 noncanonical-bits, bit-lsb-flip; plus all-hints-zero). 16 are rejected by the constraints
-(infeasible — a sound-gadget signal), 4 are satisfiable:
+(infeasible; a sound-gadget signal), 4 are satisfiable:
 
 | Witness family                          | Free target wires |
 |-----------------------------------------|-------------------|
@@ -45,7 +45,7 @@ noncanonical-bits, bit-lsb-flip; plus all-hints-zero). 16 are rejected by the co
 At the degenerate witness exactly 3 rows stay live on the flagged wires (a twisted-Edwards
 addition slice; every other row touching them is vacuous 0*(...)=0 on this branch). Re-seeding
 wire 261 (+1) and propagating through the live rows yields a full assignment satisfying all
-2,396 constraints, identical on the declared input, differing on wires [261,264,265,266] —
+2,396 constraints, identical on the declared input, differing on wires [261,264,265,266], 
 an exact two-witness counterexample (same public scalar, different accepted result point).
 Naive single-wire perturbation is rejected: the freedom is 2-parameter and coupled.
 Negative control: the same constructor fails at the honest witness (rows are binding there).

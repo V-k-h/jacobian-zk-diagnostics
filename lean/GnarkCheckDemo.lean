@@ -64,7 +64,7 @@ theorem wiresIn_mem {l : List (F × ℕ)} {S : List ℕ} (h : wiresIn l S = true
   simpa [List.contains_iff_mem] using this
 
 /-- One pass step: if constraint `c`'s output side is `(1,w) :: Orest` with `w` new and `L,R,Orest`
-already determined, add `w`; otherwise leave `S` unchanged. Purely structural — decidable. -/
+already determined, add `w`; otherwise leave `S` unchanged. Purely structural, decidable. -/
 def stepPin (S : List ℕ) (c : Con F) : List ℕ :=
   match c.O with
   | (t :: Orest) =>
@@ -93,7 +93,7 @@ theorem stepPin_agree (c : Con F) (S : List ℕ) {a a' : ℕ → F}
     · rw [if_neg hcond]; exact hS
 
 /-- **Fold soundness (the whole checker).** Two satisfying assignments agreeing on the inputs `I`
-agree on `cs.foldl stepPin I` — the entire determined set the one-pass checker computes. Proved once;
+agree on `cs.foldl stepPin I`, the entire determined set the one-pass checker computes. Proved once;
 a per-circuit determinacy theorem is then just `fold_sound` applied to concrete `cs`, `I`, with the
 determined set obtained by reducing `cs.foldl stepPin I` (no per-step proof). -/
 theorem fold_sound (cs : List (Con F)) : ∀ (I : List ℕ) {a a' : ℕ → F},

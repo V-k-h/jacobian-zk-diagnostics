@@ -6,7 +6,7 @@ industrial corpus mentioned in the paper is not required and not included.
 
 ## Requirements
 
-- Python 3.9+ (standard library only — every analysis engine is dependency-free)
+- Python 3.9+ (standard library only; every analysis engine is dependency-free)
 - Go ≥ 1.24 (gnark v0.14.0 and v0.16.2 are fetched via the module system;
   each `go.sum` pins them)
 - Lean 4 + Lake, optional, only for the kernel-checked certificates
@@ -66,23 +66,23 @@ All measured outputs behind the paper's numbers are committed under
 
 ## Layout
 
-- `compose/gnark_jacobian.py` — the augmented-Jacobian diagnostic (exact sparse
+- `compose/gnark_jacobian.py`, the augmented-Jacobian diagnostic (exact sparse
   elimination over the circuit field); `gnark_sparse.py` is the elimination
   core; `r1cs_iden3.py` / `r1cs_to_iden3.py` convert between the JSON export
   format and iden3 binary `.r1cs`.
-- `frontends/gnark/` — gnark v0.14.0 harness: circuit export, witness export,
+- `frontends/gnark/`, gnark v0.14.0 harness: circuit export, witness export,
   the adversarial hint-degeneracy sweep, and the PLONK (SparseR1CS) exporter.
   `thirdparty/dump.go` (build-ignored) exports any third-party gnark circuit
   into the same R1CS JSON.
-- `papers/reproducer/` — per-table drivers and the dependency-free synthetic
+- `papers/reproducer/`, per-table drivers and the dependency-free synthetic
   reproducer.
-- `study/` — the measured certificate study: reference checker, complete
+- `study/`, the measured certificate study: reference checker, complete
   affine-line search, parabola certificates, Gröbner slice elimination, solve
   ablation, corpus study, and the three Go exporters (`exporter/` v0.14.0
   query-aware ScalarMul, `exporter-patched/` v0.16.2 with prove/advice/modmul
   modes, `exporter-advisory/` v0.14.0 emulated ModMul with the shifted hint).
   `study/results/` holds every measured output cited in the paper.
-- `lean/` — kernel-checked certificates: the determinacy certificate checker
+- `lean/`, kernel-checked certificates: the determinacy certificate checker
   (`R1CSChecker.lean`), the local-redundancy differential step
   (`RedundancyCert.lean`), the affine-line/parabola expansions
   (`AffineLineCert.lean`), and generated demos. Check one in place with

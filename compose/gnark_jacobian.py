@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""gnark_jacobian — RESEARCH SPIKE: determinacy via the Jacobian / algebraic-matroid criterion.
+"""gnark_jacobian, RESEARCH SPIKE: determinacy via the Jacobian / algebraic-matroid criterion.
 
 Recasts under-constraint as computational algebraic geometry. On the solution variety
 V(𝓘) of an R1CS ideal, a wire x_o is *determined* by the inputs x_I iff x_o lies in the
-algebraic closure of x_I — an algebraic-matroid closure. The Jacobian criterion tests it by
+algebraic closure of x_I, an algebraic-matroid closure. The Jacobian criterion tests it by
 LINEAR ALGEBRA at a satisfying witness p (exact here: char p ≈ 2^254 ≫ degree 2):
 
     tangent space  T = ker J(p)            (J = Jacobian of the constraints at p)
@@ -13,13 +13,13 @@ LINEAR ALGEBRA at a satisfying witness p (exact here: char p ≈ 2^254 ≫ degre
 
 This sidesteps every wall the SMT/leaf approach hit: it is a rank/nullspace computation
 (no finite-field SMT wall), it treats guards/selects/masks as ordinary polynomials (NO
-case-splitting — the thing that defeated the syntactic F-2 analysis), and the witness point
+case-splitting, the thing that defeated the syntactic F-2 analysis), and the witness point
 comes free from the prover's solver.
 
 HONEST SCOPE / open problem: the Jacobian decides ALGEBRAIC (in)dependence = transcendence
 degree, i.e. "is the fiber positive-dimensional (a wire with a continuum of free values)".
   * full-rank in x_o  ⇒  x_o INFINITELY free given inputs  ⇒  a real under-constraint (SOUND).
-  * rank-deficient    ⇒  x_o is a FINITELY-valued function of the inputs — but not necessarily
+  * rank-deficient    ⇒  x_o is a FINITELY-valued function of the inputs, but not necessarily
                          UNIQUE (e.g. w²=x pins w only up to sign). Finite-multiplicity
                          under-constraint (sign/root ambiguity) needs a secondary check.
 So this is the sound detector for the dominant "free-witness" bug class; and, evaluated at a
@@ -29,7 +29,7 @@ branch-active witness, it captures the conditional (mask/select) freedom SMT cou
 
 def gf_nullspace(rows, ncols, p):
     """Basis of the null space of the matrix `rows` (list of {col:coef}) over GF(p).
-    Returns (free_cols, basis) — free_cols = columns not pivoted (their coordinate can be
+    Returns (free_cols, basis), free_cols = columns not pivoted (their coordinate can be
     nonzero in some null vector)."""
     # dense mod-p Gaussian elimination (fine for the prototype's small systems)
     M = [[0] * ncols for _ in rows]
@@ -149,7 +149,7 @@ def _jacobian_rows(constraints, witness, fixed, p):
 
 
 def undetermined_wires(constraints, witness, fixed, p, nwires, backend="sparse"):
-    """Wires that can be nonzero in some null vector of [J(witness); fix] — i.e.
+    """Wires that can be nonzero in some null vector of [J(witness); fix], i.e.
     NOT determined by the fixed inputs. Default backend is sparse Gaussian
     elimination (gnark_sparse), which is exact and ~500x faster than the dense
     flint rref on real circuits (and the only one that reaches 21k+ wires);
@@ -231,7 +231,7 @@ def _poc():
         verdict = "FREE (under-constrained)" if target in free else "determined (first-order)"
         print(f"  {name:34s} wire {target}: {verdict:28s}  [expected: {expect}]")
 
-    print("Jacobian determinacy — proof of concept\n")
+    print("Jacobian determinacy, proof of concept\n")
 
     # 1) bilinear  Y = X*W ;  inputs {Y}.  X should be FREE given Y (SMT: sat; here: free).
     #    wires: 0=ONE 1=Y 2=X 3=W
@@ -245,7 +245,7 @@ def _poc():
     show("mask x·(sel-1)=0 @ sel=1 (fix sel)", mask, {0: 1, 1: 1, 2: 42}, {1}, 2, "FREE")
     show("mask x·(sel-1)=0 @ sel=0 (fix sel)", mask, {0: 1, 1: 0, 2: 0}, {1}, 2, "determined")
 
-    # 3) sqrt  w*w = x ;  inputs {x}.  w is 2-valued (±) — honest LIMIT: Jacobian says
+    # 3) sqrt  w*w = x ;  inputs {x}.  w is 2-valued (±), honest LIMIT: Jacobian says
     #    'determined' (0-dim fiber) though w is not unique.  wires: 0=ONE 1=x 2=w
     show("sqrt w²=x (fix x)  [known limit]",
          [({2: 1}, {2: 1}, {1: 1})], {0: 1, 1: 9, 2: 3}, {1}, 2, "determined*")

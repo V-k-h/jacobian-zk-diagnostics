@@ -1,4 +1,4 @@
-// export.go — compile a gnark circuit to R1CS and dump it as JSON for the
+// export.go: compile a gnark circuit to R1CS and dump it as JSON for the
 // diagnostic (compose/gnark_jacobian.py). gnark hands us the R1CS in-process,
 // so there is no external lowering pipeline.
 //
@@ -89,14 +89,14 @@ func (c *FreeSecret) Define(api frontend.API) error {
 	return nil
 }
 
-// sqrtHint is a placeholder hint (never executed — we only compile, never solve).
+// sqrtHint is a placeholder hint (never executed, we only compile, never solve).
 func sqrtHint(_ *big.Int, _ []*big.Int, out []*big.Int) error {
 	out[0].SetInt64(0)
 	return nil
 }
 
 // SqrtHint: an advice wire w (from a hint) with only w*w == X. The sign of w is
-// NOT pinned, so w is genuinely under-constrained — a real soundness bug the
+// NOT pinned, so w is genuinely under-constrained, a real soundness bug the
 // advice target must catch (=> UNSAFE?).
 type SqrtHint struct {
 	X frontend.Variable `gnark:",public"`
@@ -112,7 +112,7 @@ func (c *SqrtHint) Define(api frontend.API) error {
 }
 
 // Range: decompose public X into Bits bits (api.ToBinary adds booleanity +
-// recomposition). The bits are advice; given X they are pinned iff 2^Bits <= p —
+// recomposition). The bits are advice; given X they are pinned iff 2^Bits <= p, 
 // the bit-decomposition uniqueness THEOREM (lean/BitDecomp.lean), not an SMT
 // query. Small Bits: SMT confirms SAFE; large Bits: SMT hits the wall, theorem
 // discharges instantly.
@@ -127,7 +127,7 @@ func (c *Range) Define(api frontend.API) error {
 }
 
 // zeroHint gives an advice wire the value 0 (a valid witness for the mask in
-// both branches; the sign/value is irrelevant — the Jacobian reads freedom off
+// both branches; the sign/value is irrelevant; the Jacobian reads freedom off
 // the constraint gradient, not the witness value).
 func zeroHint(_ *big.Int, _ []*big.Int, out []*big.Int) error {
 	out[0].SetInt64(0)
@@ -137,7 +137,7 @@ func zeroHint(_ *big.Int, _ []*big.Int, out []*big.Int) error {
 // Mask reproduces gnark's exact F-2 residual pattern on REAL gnark R1CS: an
 // advice wire x (from a hint) constrained ONLY by the mask x*(Sel-1)==0.
 //
-//	Sel=1 : x*0==0  -> x is UNCONSTRAINED (under-determined) — the dangerous branch
+//	Sel=1 : x*0==0  -> x is UNCONSTRAINED (under-determined), the dangerous branch
 //	Sel=0 : x*(-1)==0 -> x==0 (pinned/determined)
 //
 // Determinacy of x given {Sel} is thus a per-branch fact; the Jacobian, evaluated
@@ -341,9 +341,9 @@ func writeWitnessJSON(vec fr.Vector, outPath string) error {
 	return json.NewEncoder(f).Encode(out)
 }
 
-// loadAndExport is the CIRCUIT-AGNOSTIC path: it reads gnark's own serialized artifacts —
+// loadAndExport is the CIRCUIT-AGNOSTIC path: it reads gnark's own serialized artifacts, 
 // a compiled constraint system (`ccs.WriteTo`) and a full witness (`w.WriteTo`), which any
-// gnark user already produces — solves, and emits the R1CS + solved wire vector. No circuit
+// gnark user already produces, solves, and emits the R1CS + solved wire vector. No circuit
 // definition, no per-circuit assignment builders. (Custom-hint circuits: the user instead
 // calls writeR1CSJSON/writeWitnessJSON from their own harness where their hints are in scope;
 // std-hint / hint-free circuits work fully standalone here via witnessHints.)
@@ -393,7 +393,7 @@ func loadAndExport(ccsPath, witPath, r1csOut, witOut string) {
 }
 
 // serialize writes gnark's own serialized artifacts (ccs.bin, wit.bin) for a built-in
-// circuit — the reference for what a user emits from their harness (`ccs.WriteTo`,
+// circuit, the reference for what a user emits from their harness (`ccs.WriteTo`,
 // `fullWitness.WriteTo`) to feed the circuit-agnostic `load` path.
 func serialize(name, ccsPath, witPath string) {
 	asg := sample(name)

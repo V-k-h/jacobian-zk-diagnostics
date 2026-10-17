@@ -1,8 +1,8 @@
-// adversarial.go — generate ADVERSARIAL witnesses, not just honest ones.
+// adversarial.go: generate ADVERSARIAL witnesses, not just honest ones.
 //
 // WHY THIS EXISTS. The determinacy oracles (sparse Jacobian rank, inertness) are evaluated AT A
 // WITNESS, so they see only the freedom present on the branch that witness lies on. Every witness
-// this project ever fed them came from gnark's own solver running honest hints — which by
+// this project ever fed them came from gnark's own solver running honest hints, which by
 // construction never visits a degenerate branch. Measured on the isolated fake-GLV scalar
 // multiplication: at the honest witness 0 free wires and the defect is invisible; at the
 // degenerate one (all halfGCD outputs zero) 5 free and 5 COUPLED, and the gate fails. The analysis
@@ -10,7 +10,7 @@
 //
 // So this is the missing half: a witness GENERATOR. Hints are prover-supplied and non-binding, so
 // hint degeneracies are exactly the branches a prover can steer onto, and unlike general branch
-// enumeration they are a small, structurally-enumerable set. `solver.OverrideHint` is public API —
+// enumeration they are a small, structurally-enumerable set. `solver.OverrideHint` is public API, 
 // no library patching.
 //
 // INFEASIBLE VARIANTS ARE A SUCCESS SIGNAL. Forcing a degenerate hint output often makes the system

@@ -1,10 +1,10 @@
 //go:build ignore
 
-// dump.go — export ANY third-party gnark circuit into this project's R1CS JSON.
+// dump.go: export ANY third-party gnark circuit into this project's R1CS JSON.
 //
 // The engines in compose/ read an R1CS and nothing else, so analysing someone else's circuit needs
 // only their constraints. This file is a TEMPLATE you copy into THEIR module, so their gnark version
-// is used and no dependency is added to ours (our go.mod must stay portable — see CLAUDE.md).
+// is used and no dependency is added to ours (this module must stay dependency-portable).
 // It is `//go:build ignore` so our own build skips it.
 //
 // USAGE

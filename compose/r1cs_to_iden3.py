@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""r1cs_to_iden3 — write this project's R1CS JSON as an iden3 binary `.r1cs` file.
+"""r1cs_to_iden3, write this project's R1CS JSON as an iden3 binary `.r1cs` file.
 
 The exact inverse of `r1cs_iden3.py`, and the missing half of the common input
 layer for head-to-head comparisons: the gnark harness exports our benchmark
 instances as exporter JSON, this writer re-emits them in circom's native binary
 format, and solver-based tools that consume `.r1cs` (Picus/QED^2 and the
 computer-algebra route of AC^4) can then run on the *same* compiled instances
-the paper measures — no Circom re-implementation of the circuits, no second
+the paper measures, no Circom re-implementation of the circuits, no second
 compilation that could change the constraint system under comparison.
 
 WIRE CLASSES. This project orders wires [public incl ONE@0][secret][internal];
 iden3 orders [ONE=0][public outputs][public inputs][private inputs][internal].
 Both start with ONE and agree on the relative order, so emission needs no
-permutation — only a split of this project's public block (after ONE) into
+permutation, only a split of this project's public block (after ONE) into
 outputs|inputs. `--pubout K` declares the first K wires after ONE as public
 outputs (default 0). For a Picus uniqueness query, make the target wires the
 public outputs and the conditioned wires the public inputs; Picus asks exactly
@@ -22,7 +22,7 @@ FORMAT written (little-endian, version 1, three sections):
     magic "r1cs" | u32 1 | u32 3
     type 1 header : u32 fieldSize | prime[fieldSize] | u32 nWires
                     u32 nPubOut | u32 nPubIn | u32 nPrvIn | u64 nLabels | u32 nConstraints
-    type 2 cons   : per constraint, LCs A,B,C — u32 nnz then nnz*(u32 wire, coeff[fieldSize])
+    type 2 cons   : per constraint, LCs A,B,C, u32 nnz then nnz*(u32 wire, coeff[fieldSize])
                     meaning (A.x)*(B.x) == (C.x)
     type 3 w2l    : u64 identity map wire -> label
 
