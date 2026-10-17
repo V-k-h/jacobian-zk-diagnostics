@@ -3,7 +3,7 @@
 
 The exact inverse of `r1cs_iden3.py`, and the missing half of the common input
 layer for head-to-head comparisons: the gnark harness exports our benchmark
-instances as monitor JSON, this writer re-emits them in circom's native binary
+instances as exporter JSON, this writer re-emits them in circom's native binary
 format, and solver-based tools that consume `.r1cs` (Picus/QED^2 and the
 computer-algebra route of AC^4) can then run on the *same* compiled instances
 the paper measures — no Circom re-implementation of the circuits, no second
@@ -87,7 +87,7 @@ def permute_for_query(sys_, out_wires, in_wires):
 
 
 def dump(sys_, path, pubout=0):
-    """Write a monitor R1CS dict as an iden3 .r1cs file."""
+    """Write an exporter R1CS dict as an iden3 .r1cs file."""
     prime = int(sys_["prime"])
     fs = _field_size(prime)
     n_wires = sys_["n_wires"]

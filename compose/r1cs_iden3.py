@@ -104,7 +104,7 @@ def load(path):
 
 
 def load_any(path):
-    """Dispatch on extension: .r1cs = iden3 binary, anything else = monitor JSON.
+    """Dispatch on extension: .r1cs = iden3 binary, anything else = exporter JSON.
     Lets every engine accept either producer with no caller changes."""
     if str(path).endswith(".r1cs"):
         return load(path)

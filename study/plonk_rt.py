@@ -20,7 +20,7 @@ ROOT = Path(__file__).resolve().parent
 PLONK = ROOT / ".." / "reproducer" / "gnark-plonk"
 
 
-def load_monitor(path):
+def load_r1cs_json(path):
     d = json.loads(Path(path).read_text())
     p = int(d["prime"])
 
@@ -39,7 +39,7 @@ def load_monitor(path):
 
 
 def main():
-    d, p, rows = load_monitor(PLONK / "circuit.r1cs.json")
+    d, p, rows = load_r1cs_json(PLONK / "circuit.r1cs.json")
     n = d["n_wires"]
     fixed = [0, 1]  # synthetic ONE + the one declared input (paper's query)
     out = []

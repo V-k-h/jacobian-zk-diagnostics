@@ -43,7 +43,7 @@ ROOT = Path(__file__).resolve().parent
 
 
 def to_forms(mon):
-    """Monitor-format constraints -> analyze-format rows ((const, coeffs) triples)."""
+    """Exporter-format constraints -> analyze-format rows ((const, coeffs) triples)."""
     p = int(mon["prime"])
     rows = []
     for c in mon["constraints"]:
