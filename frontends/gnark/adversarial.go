@@ -6,7 +6,7 @@
 // construction never visits a degenerate branch. Measured on the isolated fake-GLV scalar
 // multiplication: at the honest witness 0 free wires and the defect is invisible; at the
 // degenerate one (all halfGCD outputs zero) 5 free and 5 COUPLED, and the gate fails. The analysis
-// was adequate; the sampling was not. See docs/postmortem-trusted-leaves.md.
+// was adequate; the sampling was not.
 //
 // So this is the missing half: a witness GENERATOR. Hints are prover-supplied and non-binding, so
 // hint degeneracies are exactly the branches a prover can steer onto, and unlike general branch

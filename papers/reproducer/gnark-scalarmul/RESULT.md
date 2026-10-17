@@ -4,7 +4,7 @@ Gadget: `github.com/consensys/gnark/std/algebra/native/twistededwards` `curve.Sc
 on BN254, driven by `frontends/gnark` `ScalarMulGadget` (declared input: the scalar S).
 gnark v0.14.0 (< 0.16.2; the vulnerable era). Compiles to **2396 constraints, 2398 wires**.
 
-Pipeline (from `zk-soundness-monitor/`):
+Pipeline (from the repository root):
 
     cd frontends/gnark && GOWORK=off go build -o /tmp/zksm-gnark .
     /tmp/zksm-gnark adversarial scalarmul /tmp/out      # gnark compile -> R1CS + witnesses

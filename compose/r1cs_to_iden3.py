@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""r1cs_to_iden3 — write the monitor's R1CS JSON as an iden3 binary `.r1cs` file.
+"""r1cs_to_iden3 — write this project's R1CS JSON as an iden3 binary `.r1cs` file.
 
 The exact inverse of `r1cs_iden3.py`, and the missing half of the common input
 layer for head-to-head comparisons: the gnark harness exports our benchmark
@@ -9,10 +9,10 @@ computer-algebra route of AC^4) can then run on the *same* compiled instances
 the paper measures — no Circom re-implementation of the circuits, no second
 compilation that could change the constraint system under comparison.
 
-WIRE CLASSES. The monitor orders wires [public incl ONE@0][secret][internal];
+WIRE CLASSES. This project orders wires [public incl ONE@0][secret][internal];
 iden3 orders [ONE=0][public outputs][public inputs][private inputs][internal].
 Both start with ONE and agree on the relative order, so emission needs no
-permutation — only a split of the monitor's public block (after ONE) into
+permutation — only a split of this project's public block (after ONE) into
 outputs|inputs. `--pubout K` declares the first K wires after ONE as public
 outputs (default 0). For a Picus uniqueness query, make the target wires the
 public outputs and the conditioned wires the public inputs; Picus asks exactly
@@ -26,7 +26,7 @@ FORMAT written (little-endian, version 1, three sections):
                     meaning (A.x)*(B.x) == (C.x)
     type 3 w2l    : u64 identity map wire -> label
 
-Coefficients are reduced into [0, p); the monitor's occasional negative decimal
+Coefficients are reduced into [0, p); the occasional negative decimal
 strings land on the canonical representative. Round-trip equality against
 `r1cs_iden3.load` (up to zero-coefficient dropping and term order) is asserted
 by `--check`, and `self_test()` runs a small synthetic system through a full
@@ -58,7 +58,7 @@ def _emit_lc(out, terms, prime, fs):
 def permute_for_query(sys_, out_wires, in_wires):
     """Reorder wires into iden3 query classes [ONE][outputs][inputs][rest].
 
-    Takes the monitor system plus the wire ids that should act as the public
+    Takes the R1CS system plus the wire ids that should act as the public
     outputs (the targets T) and public inputs (the conditioned set F minus ONE)
     of a uniqueness query, and returns an equivalent system with those wires
     moved into the leading blocks and every constraint reindexed. The returned

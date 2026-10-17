@@ -3,10 +3,10 @@
 Circuit: `frontends/gnark/bench_public.go` `MiMCChain` — N chained MiMC permutations of a
 single public input X on BN254 (gnark v0.14.0, 330 constraints per permutation), final digest
 deliberately unpinned so the solver fills every internal round wire from X alone. Ground truth:
-**all internal wires DETERMINED**. Uses only gnark's standard library — no client code — so the
-circuit, the exported instances, and this driver are all publishable.
+**all internal wires DETERMINED**. Uses only gnark's standard library, so the circuit,
+the exported instances, and this driver are all reproducible from public source.
 
-Pipeline (from `zk-soundness-monitor/`):
+Pipeline (from the repository root):
 
     cd frontends/gnark && GOWORK=off go build -o /tmp/zksm-gnark .
     for n in 3 20 60 120 200; do

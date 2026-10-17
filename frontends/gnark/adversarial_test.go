@@ -25,8 +25,8 @@ import (
 // a witness on the degenerate branch tests whether the analysis was ever the limitation, or
 // only the witness supply was.
 //
-// `solver.OverrideHint` is public gnark API, so this needs nothing but gnark-std: no client
-// code, no private backend. Emits <ADV_OUT>/scalarmul.r1cs.json plus honest/degenerate
+// `solver.OverrideHint` is public gnark API, so this needs nothing beyond gnark's standard
+// library. Emits <ADV_OUT>/scalarmul.r1cs.json plus honest/degenerate
 // witness JSONs for compose/gnark_jacobian.py.
 //
 //	ADV_OUT=/tmp/adv GOWORK=off go test -run TestAdversarialWitness -v .

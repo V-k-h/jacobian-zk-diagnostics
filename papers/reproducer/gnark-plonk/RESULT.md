@@ -13,7 +13,7 @@ Copy constraints are wire-id sharing; selectors qL..qC are fixed coefficients.
 Witness reconstructed by scattering the per-gate (L,R,O) column values onto (XA,XB,XC),
 verified gate-by-gate in Go before export.
 
-Pipeline (from zk-soundness-monitor/):
+Pipeline (from the repository root):
 
     cd frontends/gnark && GOWORK=off go build -o /tmp/zksm-gnark .
     /tmp/zksm-gnark plonk scalarmul /tmp/out

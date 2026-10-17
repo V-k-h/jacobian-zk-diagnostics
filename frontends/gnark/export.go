@@ -1,12 +1,10 @@
 // export.go — compile a gnark circuit to R1CS and dump it as JSON for the
-// soundness checker (compose/gnark_verify.py). This is the gnark analog of the
-// Noir->ACIR->LLZK->R1CS front-half: gnark hands us the R1CS in-process, so
-// there is no external lowering pipeline.
+// diagnostic (compose/gnark_jacobian.py). gnark hands us the R1CS in-process,
+// so there is no external lowering pipeline.
 //
 //	go run . <circuit> <outfile>   # -> writes R1CS JSON to <outfile>
-//	  portable toys: linear, bilinear, freesecret, sqrthint
-//	  real backend circuits (poseidon, merkle) live in backend_circuits.go,
-//	  gated behind `-tags backend` (needs the private backend via go.work).
+//	  circuits: linear, bilinear, freesecret, sqrthint, mimcchain,
+//	            merklepath, eddsaverify, mimctree
 //	(gnark logs to stdout, so JSON goes to a file to keep it clean.)
 //
 // JSON shape:
@@ -40,8 +38,8 @@ import (
 // sample assignments. Toy hints live here; backend files append their own.
 var witnessHints = []csolver.Hint{zeroHint, sqrtHint}
 
-// extra is populated by build-tagged files (e.g. backend_circuits.go) so the
-// default build stays free of any private-backend dependency.
+// extra is an extension point for build-tagged circuit files; the default
+// build depends only on gnark's standard library.
 var extra = map[string]func() frontend.Circuit{}
 
 // extraAssign is the witness analog of `extra`: a name -> fully-populated

@@ -7,4 +7,4 @@ circomlib-cff5ab6/Pedersen@pedersen                  analysed               c=  
 circomlib-cff5ab6/Point2Bits@pointbits               analysed               c=     0 verdict=underconstrained nullity(a)=256 rT(a)=256 dir=certified-line
 motivating/ValidateDecodingBuggy              analysed               c=     3 verdict=underconstrained nullity(a)=0 rT(a)=0 dir=not-tangent
 
-78 circuits; 8 underconstrained-with-cex analysed; results -> /Users/vijay/projects/zk-soundness/zk-soundness-monitor/papers/study-2026-10-03/results/corpus-line-study.json
+78 circuits; 8 underconstrained-with-cex analysed; results -> <path>

@@ -1,10 +1,10 @@
 // gadgets.go — LIBRARY gadgets isolated as standalone circuits, so a gadget can be
 // CERTIFIED on its own before it is granted trusted-leaf status.
 //
-// Rationale (docs/postmortem-trusted-leaves.md): a trust boundary drawn at a
+// Rationale: a trust boundary drawn at a
 // SOURCE-CODE boundary ("it came from gnark-std") is meaningless in R1CS, which is one
 // flat constraint system. A gadget's soundness lives entirely in the constraints it emits
-// into the caller's R1CS — exactly the object the monitor reads. So a gadget is just a
+// into the caller's R1CS — exactly the object the diagnostic reads. So a gadget is just a
 // small circuit, and it should earn leaf status by passing the same audit as a circuit,
 // at its own (tiny) scale.
 //
@@ -17,9 +17,9 @@
 // bad inputs", need adversarial-hint non-vacuity instead — determinacy on a gadget with
 // no outputs is vacuously true, which is how "no outputs ⇒ safe" misled us.)
 //
-// These wrappers use gnark-std only — no private/client dependencies — so they build on
-// the DEFAULT target (no `-tags backend`) and are portable. Build with GOWORK=off to
-// keep any local go.work out of the picture.
+// These wrappers use gnark's standard library only, so they build on the default target
+// and are portable. Build with GOWORK=off so that an unrelated Go workspace file
+// elsewhere on the machine cannot affect the build.
 package main
 
 import (

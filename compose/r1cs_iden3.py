@@ -1,17 +1,11 @@
 #!/usr/bin/env python3
-"""r1cs_iden3 — read the iden3 binary `.r1cs` format into the monitor's R1CS JSON shape.
+"""r1cs_iden3 — read the iden3 binary `.r1cs` format into this project's R1CS JSON shape.
 
-WHY THIS EXISTS. Every engine in `compose/` — the leaf closure, the derivation certificate,
-the multiplicity bounds, the Jacobian finder, the inertness check, the two-engine differential
-audit — consumes one thing: an R1CS. They were built against the gnark exporter's JSON, but
-nothing in them is gnark-specific. This reader makes that concrete by admitting the OTHER
-producer of R1CS in this project:
-
-  * **LLZK / Noir** — `ronin-llzk/r1cs-export` lowers LLZK `r1cs`-dialect MLIR and emits
-    iden3 `.r1cs` (`emit_r1cs`). So the whole engine suite now runs on the LLZK frontend
-    WITHOUT waiting on the upstream `llzk-opt` `scf.if` work, which blocks the PCL/Picus
-    route but not this one.
-  * **circom** — iden3 `.r1cs` is circom's native output, so circom circuits come along free.
+WHY THIS EXISTS. The diagnostic and the certificate engines consume one thing: an R1CS. They
+were built against the gnark exporter's JSON, but nothing in them is gnark-specific. This
+reader admits the other producer used here: circom, whose native output is iden3 `.r1cs`.
+That is what makes the corpus study of `study/corpus_line_study.py` possible, since the
+benchmark circuits it analyses are circom sources.
 
 FORMAT (little-endian throughout):
     magic "r1cs" | u32 version | u32 nSections
@@ -23,10 +17,10 @@ FORMAT (little-endian throughout):
       type 3 w2l    : wire -> label map (ignored; we key on wire id)
 
 WIRE CLASSES. iden3 orders wires [ONE=0][public outputs][public inputs][private inputs]
-[internal], which is exactly the monitor's [public incl ONE@0][secret][internal]. So
-n_public = 1 + nPubOut + nPubIn and n_secret = nPrvIn, with no permutation needed. Note the
-LLZK exporter writes nPubOut=0, nPubIn=<its public wires>, nPrvIn=0 and lumps the remainder
-as internal — which lands correctly under the same rule.
+[internal], which is exactly this project's [public incl ONE@0][secret][internal]. So
+n_public = 1 + nPubOut + nPubIn and n_secret = nPrvIn, with no permutation needed. An
+exporter that writes nPubOut=0, nPubIn=<its public wires>, nPrvIn=0 and lumps the remainder
+as internal lands correctly under the same rule.
 """
 import json
 import struct
@@ -63,7 +57,7 @@ def _header(payload):
 
 
 def _constraints(payload, hdr):
-    """Parse the constraint section into the monitor's [[coeffDecimal, wireID], ...] shape."""
+    """Parse the constraint section into this project's [[coeffDecimal, wireID], ...] shape."""
     fs, off = hdr["field_size"], 0
     out = []
     for _ in range(hdr["n_constraints"]):
@@ -84,7 +78,7 @@ def _constraints(payload, hdr):
 
 
 def load(path):
-    """Read an iden3 .r1cs file and return the monitor's R1CS dict."""
+    """Read an iden3 .r1cs file and return this project's R1CS dict."""
     with open(path, "rb") as f:
         buf = memoryview(f.read())
     hdr = cons = None
