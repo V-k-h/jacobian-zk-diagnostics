@@ -1,6 +1,6 @@
 /-
 AffineLineCert.lean: the algebraic core of the affine-line certificate
-(ePrint 2026/1852, Proposition "Affine-line certificate").
+(the paper's Proposition "Affine-line certificate").
 
 An R1CS row is f(x) = (L x + lc)(R x + rc) − (O x + oc) with L, R, O linear.
 The certificate rests on the exact quadratic expansion along a line
@@ -59,7 +59,7 @@ theorem quadratic_coefficient_of_point (L Rf O : V →ₗ[R] R) (lc rc oc : R) (
 
 /-- Exact quartic expansion of a row along the parabola `a + t • v + t^2 • u`:
 the degree-`k` coefficients are the certificate conditions of the
-affine-parabola certificate (ePrint 2026/1852, Theorem "Affine-parabola
+affine-parabola certificate (the paper's Theorem "Affine-parabola
 certificate"). -/
 theorem r1csRow_parabola_expansion (L Rf O : V →ₗ[R] R) (lc rc oc : R) (a v u : V) (t : R) :
     r1csRow L Rf O lc rc oc (a + t • v + t ^ 2 • u)

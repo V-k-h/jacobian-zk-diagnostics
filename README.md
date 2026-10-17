@@ -1,6 +1,6 @@
 # Jacobian Diagnostics for Under-Constrained Zero-Knowledge Circuits
 
-Reproduction code for the paper (IACR ePrint 2026/1852). Every measured
+Reproduction code for the accompanying paper. Every measured
 table and claim in the paper regenerates from this repository alone; the
 industrial corpus mentioned in the paper is not required and not included.
 
@@ -90,7 +90,7 @@ All measured outputs behind the paper's numbers are committed under
 
 ## Relation to the paper
 
-Section numbers refer to the ePrint version. The scale and topology tables are
+Section numbers refer to the submitted version. The scale and topology tables are
 Section "Exact sparse linear algebra at circuit scale"; the adversarial sweep
 and second-witness confirmation are Section "Witness locality"; the synthetic
 reproducer and its Theorem E certificate checks are Sections "A synthetic

@@ -1,6 +1,6 @@
 /-
 RedundancyCert.lean: the differential step of the paper's local-redundancy
-certificate (ePrint 2026/1852, Lemma "Local-redundancy certificate").
+certificate (the paper's Lemma "Local-redundancy certificate").
 
 The paper discards a vacuous constraint row `g` from the augmented Jacobian
 when an explicit identity  w * g = ∑ i, q i * f i  holds with the retained
